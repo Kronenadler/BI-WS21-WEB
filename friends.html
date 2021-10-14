@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--Diese Ansicht enthält drei Bereiche: die ungeordnete Liste mit aktuellen Freunden, die
+geordnete Liste mit Freundschaftsanfragen und ein Formular, mit dem ein neuer Freund
+hinzugefügt werden kann. Setzen Sie die Listen sowie das Formular um und separieren Sie
+diese visuell voneinander, zum Beispiel über eine Trennungslinie. Verlinken Sie die Einträge in
+der Liste mit Freunden mit der Chat-Ansicht. Ergänzen Sie einen Link zur Logout-Ansicht und
+ggf. zu den Nutzerprofil-Einstellungen.->
+<form action="send.html" method="post"> -->
+
+<header>
+    <title>
+        Friendslist
+    </title>
+</header>
+<body>
+<h1>Friends</h1>
+<a href="./logout.html">Log out</a>
+<span>|</span>
+<a href="./settings.html">Settings</a>
+<hr>
+<ul>
+    <li><a href="./add.html">
+        Someone</a></li>
+    <li><a href="./add.html">
+        Anotherone</a></li>
+    <li>Third one</li>
+</ul>
+<hr>
+<h2>New Requests:</h2>
+<ol>
+    <li>New Friend 01</li>
+    <li>New Friend 02</li>
+    <li>New Friend 03</li>
+</ol>
+<hr>
+<input id="Username" type="text" name="Username" value="" size="20" maxlength="50;" />
+<a href="./add">
+    <button>Add</button>
+</a>
+</body>

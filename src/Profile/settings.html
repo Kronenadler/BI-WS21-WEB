@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <title>Nutzereinstellungen</title>
+</head>
+
+<body>
+    <!--Eingabefunktion und submit mithilfe von Buttons-->
+    <form>
+        <h2>Profile Settings</h2>
+        <fieldset title="Base Data">
+            <legend>Base Data:</legend>
+            <label>First Name</label> <input placeholder="Your Name"> <br/>
+            <span>Last Name</span> <input placeholder="Your Surname"> <br/>
+            <span>Coffe or Tea</span> 
+            <select name="hotbeverage" id="beverage">
+                <option value="neither nor">Neither nor</option>
+                <option value="Coffee">Coffee</option>
+                <option value="tea">Tea</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Tell me Something about you:</legend>
+            <input placeholder="Some Comment here"/>
+        </fieldset>
+        <fieldset>
+            <legend>Präferenz</legend>
+            <input type="radio" id="oneline" name="displaymethod">
+            <label for="oneline"> Username and Message in one Line</label> <br/>
+            <input type="radio" id="sepline" name="displaymethod">
+            <label for="sepline"> Username and Message in seperate Lines</label>
+        </fieldset>
+    </form>
+</body>

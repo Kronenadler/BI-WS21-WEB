@@ -1,0 +1,42 @@
+/* Style für "gefährliche" Links die rot markiert werden sollen */
+a:link.dangerous { 
+    color: red;
+  }
+
+/* unvisited link */
+a:link {
+    color: red;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color:lightblue;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  }
+
+
+/* Center Alignment für alle Elemente mit class="center"*/
+  .center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    float: left;
+  }
+/* Right Alignment */
+  .right {
+    position: absolute;
+    float: right;
+    right: 0px;
+    width: auto;
+    border: 2px solid grey;
+    padding: 10px;
+  }

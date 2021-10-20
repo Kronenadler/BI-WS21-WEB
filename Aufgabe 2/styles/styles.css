@@ -5,7 +5,7 @@ a:link.dangerous {
 
 /* unvisited link */
 a:link {
-    color: red;
+    color: blue;
   }
   
   /* visited link */

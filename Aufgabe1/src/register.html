@@ -15,28 +15,36 @@
 
     <h1>Register yourself</h1>
 
-    <fieldset>
-        <legend style="padding:5px; ">Register</legend>
-
-        <p style="padding:0px">
-            <label for="Username">Username</label>
-            <input id="Username" type="text" name="Username" value="" size="20" maxlength="50;" />
-        </p>
+    <form action="friends.html" method="post">
+        <!-- Inputs -->
+        <fieldset>
+            <legend style="padding:5px; ">Register</legend>
+    
+            
+                <p style="padding:0px">
+                    <label for="Username">Username</label>
+                    <input id="Username" type="text" name="username" value="" size="20" maxlength="50;" />
+                    <br>
+                
+                    <label for="Password">Password</label>
+                    <input type="password" id="psw" name="psw">
+                    <br>
+                
+                    <label for="Password">Confirm Password</label>
+                    <input type="password" id="pswCnf" name="pswCnf">
+                </p>
+        </fieldset>
+    
+        <!-- Buttons -->
         <p>
-            <label for="Password">Password</label>
-            <input type="password" id="psw" name="psw">
+            <a href="./login.html">
+                <button type="button">Cancel</button>
+            </a>
+        
+            <button type="submit">Create Account</button>
         </p>
-        <p>
-            <label for="Password">Confirm Password</label>
-            <input type="password" id="psw" name="psw">
-        </p>
+        
+    </form>
 
-    </fieldset>
-
-    <a href="./login.html">
-        <button>Cancel</button>
-    </a>
-    <a href="./friends.html">
-        <button>Create Account</button>
-    </a>
+    
 </body>

@@ -33,6 +33,13 @@ a:link {
     padding: 10px;
     float: left;
   }
+
+  .align-center {
+    display: block;
+    margin: 1.0em auto;
+    text-align: center;
+}
+
 /* Right Alignment */
   .right {
     width: 70%;

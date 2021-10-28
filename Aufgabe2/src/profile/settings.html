@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" href="../../styles/styles.css">
     <title>Nutzereinstellungen</title>
 </head>
 
@@ -7,7 +8,7 @@
     <!--Eingabefunktion und submit mithilfe von Buttons-->
     <form>
         <h2>Profile Settings</h2>
-        <fieldset title="Base Data">
+        <fieldset title="Base Data" class="align-center">
             <legend>Base Data:</legend>
             <label>First Name</label> <input placeholder="Your Name"> <br/>
             <span>Last Name</span> <input placeholder="Your Surname"> <br/>
@@ -18,16 +19,28 @@
                 <option value="tea">Tea</option>
             </select>
         </fieldset>
-        <fieldset>
+        <fieldset >
             <legend>Tell me Something about you:</legend>
-            <input placeholder="Some Comment here"/>
+            <input style="height: 5000;" placeholder="Some Comment here"/>
         </fieldset>
         <fieldset>
             <legend>Präferenz</legend>
-            <input type="radio" id="oneline" name="displaymethod">
-            <label for="oneline"> Username and Message in one Line</label> <br/>
-            <input type="radio" id="sepline" name="displaymethod">
-            <label for="sepline"> Username and Message in seperate Lines</label>
+            <div style="padding: 5 0;">
+                <input type="radio" id="oneline" name="displaymethod">
+                <label for="oneline"> Username and Message in one Line</label>
+            </div>
+            <div style="margin: 5 0;">
+                <input type="radio" id="sepline" name="displaymethod">
+                <label for="sepline"> Username and Message in seperate Lines</label>
+            </div>
         </fieldset>
+        <div class="align-center">
+            <button>
+                Cancel
+            </button>
+            <button>
+                Save
+            </button>
+        </div>
     </form>
 </body>

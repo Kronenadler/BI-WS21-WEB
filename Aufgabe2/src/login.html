@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <header>
+  <link rel="stylesheet" href="../styles/dwstyles.css">
     <title>Login</title>
 </header>
-<body>
-    <img src="../images/chat.png" width="5%">
+<body class="login">
+    <img src="../images/chat.png">
     <h1>Please sign in</h1>
 
-
-    <fieldset>
-    <legend style="padding:5px; ">Login</legend>
-    <p style="padding:0px">
-      <label for="Username">Username</label>
-      <input id="Username" type="text" name="Username" value="" size="20" maxlength="50;" />
+<fieldset class="login">
+    <legend>Login</legend>
+   <div>
+    <p id="username">
+      <label for="Username" id="us1ername">Username</label>
+      <input id="u1sername" placeholder="Username" type="text" name="Username" value="" size="20" maxlength="50" />
+    </p>  
+    <p id="password">
+      <label for="Password" id="1password"> Password</label>
+      <input type="password" id="1password" placeholder="Password" name="pwd" value="" size="20" maxlength="50">
     </p>
-    <p>
-      <label for="Password">Password</label>
-      <input type="password" id="psw" name="psw">
-    </p>
+  </div>
 </fieldset>
 
-<a href="./register.html">
-    <button>Register</button>
+<a id="link" href="./register.html">
+    <button id="button" class="grey">Register</button>
 </a>
-<a href="./friends.html">
-    <button>Login</button>
+<a id = "link" href="./friends.html">
+    <button id="button" class="blue">Login</button>
 </a>
 
 

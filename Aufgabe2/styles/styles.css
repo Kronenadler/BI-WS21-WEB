@@ -1,11 +1,13 @@
 /* Style für "gefährliche" Links die rot markiert werden sollen */
 a:link.dangerous { 
     color: red;
+    text-decoration: none;
   }
 
 /* unvisited link */
 a:link {
     color: blue;
+    text-decoration: none;
   }
   
   /* visited link */
@@ -31,12 +33,26 @@ a:link {
     padding: 10px;
     float: left;
   }
+
+  .align-center {
+    display: block;
+    margin: 1.0em auto;
+    text-align: center;
+}
+
 /* Right Alignment */
   .right {
-    position: absolute;
+    width: 70%;
     float: right;
-    right: 0px;
-    width: auto;
+    box-sizing: border-box;
     border: 2px solid grey;
-    padding: 10px;
+    padding: 10;
+  }
+
+  /* Right Alignment */
+  .left {
+    width: 30%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15 0 0;
   }

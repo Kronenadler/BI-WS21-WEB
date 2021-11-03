@@ -1,4 +1,136 @@
+/* Login & Logout*/
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+  background-color: white;
+  text-align: center;
+  max-width:900px;
+  font-family:'Franklin';
+  margin: auto;
+}
+body.login {
+  align-self:center;
+  margin-top:10px;
+}
+fieldset.login{
+  background-color:white;
+  border-style:dotted;
+  margin: auto;
+  width:50%;
+  padding:0px;
+}
+legend {
+  text-align:left;
+  color: black;
+  width: 41px;
+  padding: 0px 0px;
+  margin-left: 5px;
+}
+#username {
+  text-align: right;
+  box-sizing: border-box;
+  height:auto;
+  margin-right:10%;
+  padding-bottom:0px;
+  margin-bottom:0px;
+  margin-top:2%;
+}
+#password {
+  margin-top:1%;
+  text-align: right;
+  box-sizing: border-box;
+  height:auto;
+  margin-right:10%;
+  padding-top:0px;
+  margin-bottom:1%
+}
+#button {
+  text-align: center;  
+  border:none;
+  padding:7px 15px 7px 15px;
+  color:white;
+  margin: 5px 0px 0px 0px;
+  font-size: 1em;
+}
+#link {
+  text-decoration: none;
+}
+button.grey {
+  background-color: lightgrey;
+}
+button.blue {
+  background-color:blue; 
+}
+button:hover {
+  background-color:purple;
+}
+img{
+  margin-bottom:-15px;
+  width:15%;
+  border-radius: 50%;
+  }
+/* Friendslist */
+
+body.friends{
+max-width:900px;
+text-align:left;
+align-self:left;
+background-color:rgb(231, 231, 231);
+margin-left: 1%;
+}
+hr { 
+border: 1px dashed #000;margin: auto; margin-top:1%;
+}
+ul.friends{
+background-color:white;
+border-radius:4px;
+border:1px solid grey;
+list-style-type:none;
+margin-top: 15px;
+margin-bottom: 15px;
+padding: 10px 10px 5px 10px;
+}   
+.msgcount {
+float:right;
+text-align:right;
+background-color:blue;
+color:white;
+border-style:none;
+}
+.friendrequest {
+margin-bottom:1%;
+}
+#friendslist{
+list-style-type: none;
+margin-bottom:15px;
+padding: 0;
+width: 100%;
+}
+
+#frInsertUsername {
+text-decoration: none;
+margin-top:1%;
+font-size:0.85em;
+padding: 1% 60% 1% 1%;
+}
+.sendFR {
+background-color: grey;
+color:white;
+font-size:0.85em;
+float:right;
+text-align: center;  
+border:none;
+padding:1.25% 7% 1.25% 7%;
+margin-top: 1%;
+}
+sendFR:hover {
+background-color:purple;
+}
+
+
 /* Style für "gefährliche" Links die rot markiert werden sollen */
+
 a:link.dangerous { 
     color: red;
     text-decoration: none;

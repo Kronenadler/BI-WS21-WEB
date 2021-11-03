@@ -1,3 +1,4 @@
+/* Login & Logout*/
 body.login {
     background-color: white;
     text-align: center;
@@ -7,6 +8,65 @@ body.login {
     margin-top:10px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   }
+  fieldset.login{
+    background-color:white;
+    border-style:dotted;
+    margin: auto;
+    width:50%;
+    padding:0px;
+  }
+  legend {
+    text-align:left;
+    color: black;
+    width: 41px;
+    padding: 0px 0px;
+    margin-left: 5px;
+  }
+  #username {
+    text-align: right;
+    box-sizing: border-box;
+    height:auto;
+    margin-right:10%;
+    padding-bottom:0px;
+    margin-bottom:0px;
+    margin-top:2%;
+  }
+  #password {
+    margin-top:1%;
+    text-align: right;
+    box-sizing: border-box;
+    height:auto;
+    margin-right:10%;
+    padding-top:0px;
+    margin-bottom:1%
+  }
+  #button {
+    text-align: center;  
+    border:none;
+    padding:7px 15px 7px 15px;
+    color:white;
+    margin: 5px 0px 0px 0px;
+    font-size: 1em;
+  }
+  #link {
+    text-decoration: none;
+  }
+  button.grey {
+    background-color: lightgrey;
+  }
+  button.blue {
+    background-color:blue; 
+  }
+  button:hover {
+    background-color:purple;
+  }
+  img{
+    margin-bottom:-15px;
+    width:15%;
+    border-radius: 50%;
+    }
+/* Friendslist */
+
 body.friends{
   max-width:900px;
   align-self:left;
@@ -14,18 +74,9 @@ body.friends{
   background-color:rgb(231, 231, 231);
 
 }
-
 hr { 
   border: 1px dashed #000;margin: auto; margin-top:1%;
  }
-
-fieldset.login{
-    background-color:white;
-    border-style:dotted;
-    margin: auto;
-    width:50%;
-    padding:0px;
-  }
 ul.friends{
   background-color:white;
   border-radius:4px;
@@ -42,8 +93,8 @@ ul.friends{
   color:white;
   border-style:none;
 }
-#fun {
-  text-align:right;
+.friendrequest {
+  margin-bottom:1%;
 }
 #friendslist{
   list-style-type: none;
@@ -51,74 +102,22 @@ ul.friends{
   padding: 0;
   width: 100%;
 }
-legend {
-    text-align:left;
-    color: black;
-    width: 41px;
-    padding: 0px 0px;
-    margin-left: 5px;
-  }
-img{
-    margin-bottom:-15px;
-    width:15%;
-    border-radius: 50%;
-    }
-#username {
-  text-align: right;
-  box-sizing: border-box;
-  height:auto;
-  margin-right:10%;
-  padding-bottom:0px;
-  margin-bottom:0px;
-  margin-top:2%;
-}
-.friendrequest {
-  margin-bottom:1%;
-}
-#password {
-  margin-top:1%;
-  text-align: right;
-  box-sizing: border-box;
-  height:auto;
-  margin-right:10%;
-  padding-top:0px;
-  margin-bottom:1%
-}
-#button {
-  text-align: center;  
-  border:none;
-  padding:7px 15px 7px 15px;
-  color:white;
-  margin: 5px 0px 0px 0px;
-  font-size: 1em;
-}
-#link {
-  text-decoration: none;
-}
-button.grey {
-  background-color: lightgrey;
-}
-button.blue {
-  background-color:blue; 
-}
-button:hover {
-  background-color:purple;
-}
+
 #frInsertUsername {
   text-decoration: none;
   margin-top:1%;
   font-size:0.85em;
   padding: 1% 60% 1% 1%;
 }
-  .sendFR {
-    background-color: grey;
-    color:white;
-    font-size:0.85em;
-    float:right;
-    text-align: center;  
-    border:none;
-    padding:1.25% 7% 1.25% 7%;
-    margin-top: 1%;
+.sendFR {
+  background-color: grey;
+  color:white;
+  font-size:0.85em;
+  float:right;
+  text-align: center;  
+  border:none;
+  padding:1.25% 7% 1.25% 7%;
+  margin-top: 1%;
   }
 sendFR:hover {
   background-color:purple;

@@ -20,7 +20,7 @@ fieldset.login{
   width:50%;
   padding:0px;
 }
-legend {
+legend.login {
   text-align:left;
   color: black;
   width: 41px;
@@ -65,7 +65,7 @@ button.blue {
 button:hover {
   background-color:purple;
 }
-img{
+img.login{
   margin-bottom:-15px;
   width:15%;
   border-radius: 50%;

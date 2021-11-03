@@ -41,7 +41,6 @@ ul.friends{
   background-color:blue;
   color:white;
   border-style:none;
-
 }
 #fun {
   text-align:right;
@@ -85,7 +84,6 @@ img{
   padding-top:0px;
   margin-bottom:1%
 }
-
 #button {
   text-align: center;  
   border:none;
@@ -98,14 +96,10 @@ img{
   text-decoration: none;
 }
 button.grey {
-  
   background-color: lightgrey;
- 
 }
 button.blue {
-  background-color:blue;
-
-  
+  background-color:blue; 
 }
 button:hover {
   background-color:purple;
@@ -116,17 +110,16 @@ button:hover {
   font-size:0.85em;
   padding: 1% 60% 1% 1%;
 }
-#frSend {
-  text-decoration: none;
-  float:right;
-}
-button.sendFR {
-  background-color: grey;
-  color:white;
-  font-size:0.85em;
-  float:right;
-  text-align: center;  
-  border:none;
-  padding:1.25% 7% 1.25% 7%;
-  margin-top: 1%;
+  .sendFR {
+    background-color: grey;
+    color:white;
+    font-size:0.85em;
+    float:right;
+    text-align: center;  
+    border:none;
+    padding:1.25% 7% 1.25% 7%;
+    margin-top: 1%;
+  }
+sendFR:hover {
+  background-color:purple;
 }

@@ -6,13 +6,19 @@ body {
   background-color: white;
   text-align: center;
   max-width:900px;
-  font-family:'Franklin';
   margin: auto;
 }
 body.login {
   align-self:center;
   margin-top:10px;
 }
+body.friends{
+  max-width:900px;
+  text-align:left;
+  align-self:left;
+  background-color:rgb(231, 231, 231);
+  margin-left: 1%;
+  }
 fieldset.login{
   background-color:white;
   border-style:dotted;
@@ -20,7 +26,7 @@ fieldset.login{
   width:50%;
   padding:0px;
 }
-legend {
+legend.login {
   text-align:left;
   color: black;
   width: 41px;
@@ -65,21 +71,12 @@ button.blue {
 button:hover {
   background-color:purple;
 }
-img{
+img.login{
   margin-bottom:-15px;
   width:15%;
   border-radius: 50%;
-  }
-/* Friendslist */
-
-body.friends{
-max-width:900px;
-text-align:left;
-align-self:left;
-background-color:rgb(231, 231, 231);
-margin-left: 1%;
 }
-hr { 
+hr.friendslist { 
 border: 1px dashed #000;margin: auto; margin-top:1%;
 }
 ul.friends{
@@ -124,9 +121,7 @@ border:none;
 padding:1.25% 7% 1.25% 7%;
 margin-top: 1%;
 }
-sendFR:hover {
-background-color:purple;
-}
+
 
 
 /* Style für "gefährliche" Links die rot markiert werden sollen */

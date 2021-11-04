@@ -8,33 +8,40 @@ ggf. zu den Nutzerprofil-Einstellungen.->
 <form action="send.html" method="post"> -->
 
 <header>
+    <link rel="stylesheet" href="../styles/styles.css">
     <title>
         Friendslist
     </title>
 </header>
-<body>
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="friends">
 <h1>Friends</h1>
-<a href="./logout.html">Log out</a>
+<a href="./logout.html" id="link"> &lt; Log out</a>
 <span>|</span>
-<a href="./profile/settings.html">Settings</a>
-<hr>
-<ul>
-    <li><a href="./chat.html">
-        Someone</a></li>
-    <li><a href="./chat.html">
-        Anotherone</a></li>
-    <li>Third one</li>
+<a href="./profile/settings.html" id="link">Settings</a>
+<hr class="friendslist">
+<div class='col-12'>
+<ul class="friends">
+    <li id="friendslist">Tom<button class="msgcount">3</button></li>
+    <li id="friendslist">Marvin<button class="msgcount">3</button></li>
+    <li id="friendslist">Tick</li>
+    <li id="friendslist">Trick</li>
 </ul>
-<hr>
+</div>
+<hr class="friendslist">
 <h2>New Requests:</h2>
 <ol>
-    <li>New Friend 01</li>
-    <li>New Friend 02</li>
-    <li>New Friend 03</li>
+    <li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li>
 </ol>
-<hr>
-<input id="Username" type="text" name="Username" value="" size="20" maxlength="50;" />
-<a href="./add.html">
-    <button>Add</button>
+<hr class="friendslist">
+<div class="row">
+    <div class="col-1">
+<input id="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20" maxlength="50;" />
+
+<a href="#add" id="link">
+    <button class="sendFR">Add</button>
 </a>
+</div>
+</div>
 </body>

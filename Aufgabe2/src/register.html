@@ -4,6 +4,8 @@
     Header 
 -->
 <header>
+    <link rel="stylesheet" href="../styles/styles_general_nick.css">
+    <link rel="stylesheet" href="../styles/styles_login_nick.css">
     <title>Register</title>
 </header>
 
@@ -11,32 +13,32 @@
     Body
 -->
 <body>
-    <img src="../images/user.png" width="5%">
+    <img src="../images/user.png">
 
-    <h1>Register yourself</h1>
+    <h1 class="title">Register yourself</h1>
 
-    <fieldset>
-        <legend style="padding:5px; ">Register</legend>
+    <fieldset class="box">
+        <legend class="legend_login">Register</legend>
 
-        <p style="padding:0px">
+        <p>
             <label for="Username">Username</label>
-            <input id="Username" type="text" name="Username" value="" size="20" maxlength="50;" />
+            <input type="text" id="username" name="username" placeholder="Username">
         </p>
         <p>
             <label for="Password">Password</label>
-            <input type="password" id="psw" name="psw">
+            <input type="password" id="psw" name="psw" placeholder="Password">
         </p>
         <p>
             <label for="Password">Confirm Password</label>
-            <input type="password" id="psw" name="psw">
+            <input type="password" id="psw" name="psw" placeholder="Repeat Password">
         </p>
 
     </fieldset>
 
-    <a href="./login.html">
-        <button>Cancel</button>
+    <a href="./login.html" class="btn_link">
+        <button class="btn">Cancel</button>
     </a>
-    <a href="./friends.html">
-        <button>Create Account</button>
+    <a href="./friends.html" class="button_link">
+        <button class="btn" type="submit">Create Account</button>
     </a>
 </body>

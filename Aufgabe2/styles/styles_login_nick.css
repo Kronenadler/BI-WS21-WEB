@@ -1,0 +1,32 @@
+/*
+ * Stylesheet for register.html & chat.html
+ *      > has to be merged with the other stylesheets
+ */
+
+img {
+    margin: 30px auto;
+    width: 25%;
+    display: block;
+    border-radius: 50%;
+}
+
+.title {
+    text-align: center;
+}
+
+.box label {
+    width: 50%;
+    border: 1px solid black; /* TODO: Remove */
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.box input {
+    width: 50%;
+    margin-right: 20px;
+}
+
+.legend_login {
+    font-family: sans-serif;
+}
+

@@ -1,0 +1,48 @@
+/*
+ * Stylesheet for chat.html
+ *      > has to be merged at some point
+ */
+
+#nav_header {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#nav_header > a {
+    font-weight: normal;
+}
+
+/*
+ * Chatbox
+ */
+.box {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.box > div {
+    margin: 10px 10px 10px 10px;
+}
+
+.box label {
+    width: 80%;
+    font-family: sans-serif;
+}
+
+.box label.timestamp {
+    color: lightgray;
+    /* TODO align to the right */
+}
+
+/*
+ * New Message Input
+ */
+form > input {
+    height: 36px;
+    width: 80%;
+}
+
+form > button {
+    width: 15%;
+    /* TODO align to the right */
+}

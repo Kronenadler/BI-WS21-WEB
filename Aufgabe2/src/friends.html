@@ -13,26 +13,35 @@ ggf. zu den Nutzerprofil-Einstellungen.->
         Friendslist
     </title>
 </header>
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body class="friends">
 <h1>Friends</h1>
 <a href="./logout.html" id="link"> &lt; Log out</a>
 <span>|</span>
 <a href="./profile/settings.html" id="link">Settings</a>
-<hr id="friendslist">
+<hr class="friendslist">
+<div class='col-12'>
 <ul class="friends">
     <li id="friendslist">Tom<button class="msgcount">3</button></li>
     <li id="friendslist">Marvin<button class="msgcount">3</button></li>
     <li id="friendslist">Tick</li>
     <li id="friendslist">Trick</li>
 </ul>
-<hr id="friendslist">
+</div>
+<hr class="friendslist">
 <h2>New Requests:</h2>
 <ol>
     <li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li>
 </ol>
-<hr id="friendslist">
+<hr class="friendslist">
+<div class="row">
+    <div class="col-1">
 <input id="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20" maxlength="50;" />
+
 <a href="#add" id="link">
     <button class="sendFR">Add</button>
 </a>
+</div>
+</div>
 </body>

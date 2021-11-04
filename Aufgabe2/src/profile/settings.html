@@ -10,28 +10,38 @@
         <h2>Profile Settings</h2>
         <fieldset title="Base Data" class="align-center">
             <legend>Base Data:</legend>
-            <label>First Name</label> <input placeholder="Your Name"> <br/>
-            <span>Last Name</span> <input placeholder="Your Surname"> <br/>
-            <span>Coffe or Tea</span> 
-            <select name="hotbeverage" id="beverage">
-                <option value="neither nor">Neither nor</option>
-                <option value="Coffee">Coffee</option>
-                <option value="tea">Tea</option>
-            </select>
+            <div>
+                <label>First Name</label>
+                <input placeholder="Your Name" type="text" value="" size="20" maxlength="50" />
+            </div> 
+            <div>
+                <label>Last Name</label>
+                <input placeholder="Your Surname" type="text" value="" size="20" maxlength="50" />
+            </div>   
+            <div>
+                <label>Coffee or Tea</label> 
+                <select class="beverage" name="hotbeverage" id="beverage" maxlength="50">
+                    <option value="neither nor">Neither nor</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="tea">Tea</option>
+                </select>
+            </div>  
         </fieldset>
         <fieldset >
             <legend>Tell me Something about you:</legend>
-            <input style="height: 5000;" placeholder="Some Comment here"/>
+            <input class="big"  placeholder="Some Comment here"/>
         </fieldset>
         <fieldset>
             <legend>Präferenz</legend>
-            <div style="padding: 5 0;">
-                <input type="radio" id="oneline" name="displaymethod">
-                <label for="oneline"> Username and Message in one Line</label>
-            </div>
-            <div style="margin: 5 0;">
-                <input type="radio" id="sepline" name="displaymethod">
-                <label for="sepline"> Username and Message in seperate Lines</label>
+            <div class="beverageleft">
+                <div class="block">
+                    <input type="radio" id="oneline" name="displaymethod">
+                    <label for="oneline"> Username and Message in one Line</label>
+                </div>
+                <div class="block">
+                    <input type="radio" id="sepline" name="displaymethod">
+                    <label for="sepline"> Username and Message in seperate Lines</label>
+                </div>               
             </div>
         </fieldset>
         <div class="align-center">

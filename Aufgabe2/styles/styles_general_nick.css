@@ -3,6 +3,16 @@
  * ----------
  */
 
+@media only screen and (max-width: 900px) {
+    [class*='col-'] {
+        width: 90%;
+    }
+
+    .full-screen {
+        width: 100%;
+    }
+}
+
  /* General properties of the whole site
     > width of 900px moved to the middle */
 body {
@@ -10,6 +20,7 @@ body {
     box-sizing: border-box;
     width: 900px;
     margin: auto;
+    text-align: center;
 }
 
 /* General style for the title */
@@ -23,6 +34,7 @@ body {
     background-color: white;
     border-style: dotted;
     border-color: #bbbbbb;
+    margin: 1% 1%;
 }
 
 /*

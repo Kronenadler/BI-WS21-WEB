@@ -21,6 +21,7 @@
 }
 
 .box > div {
+    text-align: left;
     margin: 10px 10px 10px 10px;
 }
 
@@ -30,8 +31,8 @@
 }
 
 .box label.timestamp {
+    text-align: right;
     color: lightgray;
-    /* TODO align to the right */
 }
 
 /*
@@ -44,7 +45,6 @@ form > input {
 
 form > button {
     width: 15%;
-    /* TODO align to the right */
 }
 
 div > a {

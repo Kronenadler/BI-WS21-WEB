@@ -46,3 +46,7 @@ form > button {
     width: 15%;
     /* TODO align to the right */
 }
+
+div > a {
+    margin: auto;
+}

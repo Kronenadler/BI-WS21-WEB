@@ -17,7 +17,7 @@
 
     <h1 class="title">Register yourself</h1>
 
-    <fieldset class="box">
+    <fieldset class="box" method="get">
         <legend class="legend_login">Register</legend>
 
         <p>
@@ -32,13 +32,16 @@
             <label for="Password">Confirm Password</label>
             <input type="password" id="psw" name="psw" placeholder="Repeat Password">
         </p>
-
     </fieldset>
 
-    <a href="./login.html" class="btn_link">
-        <button class="btn">Cancel</button>
-    </a>
-    <a href="./friends.html" class="button_link">
-        <button class="btn" type="submit">Create Account</button>
-    </a>
+    <div id="bottom_btns">
+        <a href="./login.html" class="btn_link">
+            <button class="btn">Cancel</button>
+        </a>
+        
+        <a href="./friends.html" class="btn_link">
+            <button class="btn" type="submit">Create Account</button>
+        </a>
+    </div>
+    
 </body>

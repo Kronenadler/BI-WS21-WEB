@@ -45,6 +45,7 @@ form > input {
 
 form > button {
     width: 15%;
+    min-width: 60px;
 }
 
 div > a {

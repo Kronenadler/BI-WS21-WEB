@@ -27,7 +27,7 @@
     float:left;
     text-align:center;
       }
-  #frInsertUsername {
+  .frInsertUsername {
     margin-top: 10%;
     width:38%;
   }
@@ -158,12 +158,15 @@ margin-bottom: 15px;
 padding: 10px 10px 5px 10px;
 }   
 .msgcount {
-float:right;
-text-align:right;
-background-color:blue;
-color:white;
-border-style:none;
-}
+  float:right;
+  text-align:right;
+  background-color:blue;
+  color:white;
+  border-style:none;
+  width: 2%;
+  height: 2%;
+  }
+
 .friendrequest {
 margin-bottom:1%;
 }
@@ -174,7 +177,7 @@ padding: 0;
 width: 100%;
 }
 
-#frInsertUsername {
+.frInsertUsername {
 text-decoration: none;
 margin-top:1%;
 font-size:0.85em;

@@ -44,7 +44,7 @@
   #password {
     padding-right:3%;
   }
-  #button {
+  #button1 {
     width:100%; 
     float:left; 
   }
@@ -163,6 +163,8 @@ text-align:right;
 background-color:blue;
 color:white;
 border-style:none;
+width: 2%;
+height: 2%;
 }
 .friendrequest {
 margin-bottom:1%;

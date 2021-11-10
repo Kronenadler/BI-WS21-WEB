@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <input id="eingabe" type="text">
+
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                let data = JSON.parse(xmlhttp.responseText);
+                console.log(data);
+                users = data;
+            }
+        };
+        xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/a120e3f6-c5e4-4cf1-943a-50d1c535ea9a/user", true);
+        // Add token, e. g., from Tom
+        xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM2NTUzNTM2fQ.Lu1pQaw_uQv6RKFJlYfYhNxp0Vsj_bSiBqewR59jftY');
+        xmlhttp.send();
+
+        const eingabe = document.getElementById('eingabe');
+
+            eingabe.addEventListener('keyup', function() {
+                console.log(eingabe.value);
+
+                if(einabe.value.length % 2 == 1) {
+                    eingabe.classList.add('fehler');
+                }
+                else {
+                    eingabe.classList.remove('fehler');
+                }
+                if(users) {
+                    for (let  user of users) {
+                        console.log(user);
+                    }
+                }
+            });
+    </script>
+</body>
+
+</html>

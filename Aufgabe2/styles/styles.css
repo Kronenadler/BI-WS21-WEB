@@ -277,18 +277,11 @@ a:link {
     color: white;
   }
 
-  button.confirm{
-    background-color: blue;
-  }
-
-  input{
-    margin: 0.5em;
-  }
-
 .fixed{
   height: 2em;
   width: 15em;
   box-sizing: border-box;
+  background-color: white;
 }
 
 .fixedlabel{

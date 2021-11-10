@@ -138,11 +138,6 @@ a:link {
     text-decoration: none;
   }
   
-  /* visited link */
-  a:visited {
-    color: green;
-  }
-  
   /* mouse over link */
   a:hover {
     color:lightblue;
@@ -207,7 +202,28 @@ a:link {
     align-content: flex-start;
   }
 
-  select.beverage{
-    height: 2em;
-    width: 15em;
+  button{
+    width: 7em;
+    height: 3em;
+    background-color: gray;
+    color: white;
   }
+
+  button.confirm{
+    background-color: blue;
+  }
+
+  input{
+    margin: 0.5em;
+  }
+
+.fixed{
+  height: 2em;
+  width: 15em;
+  box-sizing: border-box;
+}
+
+.fixedlabel{
+  padding: 0em 10px;
+  box-sizing: border-box;
+}

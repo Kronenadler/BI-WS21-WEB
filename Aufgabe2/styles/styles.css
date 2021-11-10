@@ -209,11 +209,6 @@ a:link {
     text-decoration: none;
   }
   
-  /* visited link */
-  a:visited {
-    color: green;
-  }
-  
   /* mouse over link */
   a:hover {
     color:lightblue;
@@ -267,18 +262,32 @@ a:link {
   .block{
     display: block;
     box-sizing: border-box;
-    margin: 1em;
-    float: left;
+    margin: 1em 0em;
   }
 
-  input.big {
+  textarea.big {
     margin: auto;
     width: 100%;
-    height: 10em;
-    text-align:start;
+    box-sizing: border-box;
+    height: 8em;
+    align-content: flex-start;
   }
 
-  select.beverage{
-    height: 2em;
-    width: 15em;
+  button{
+    width: 7em;
+    height: 3em;
+    background-color: gray;
+    color: white;
   }
+
+.fixed{
+  height: 2em;
+  width: 15em;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.fixedlabel{
+  padding: 0em 10px;
+  box-sizing: border-box;
+}

@@ -53,7 +53,10 @@
   padding:auto;
   float:none;
 }
-
+.msgcount {
+  padding-right:15px;
+  text-align:center;
+}
 
 }
 * {
@@ -92,6 +95,7 @@ legend.login {
   padding: 0px 0px;
   margin-left: 5px;
 }
+
 #username {
   position:relative;
   margin-left:95px;
@@ -156,6 +160,7 @@ list-style-type:none;
 margin-top: 15px;
 margin-bottom: 15px;
 padding: 10px 10px 5px 10px;
+
 }   
 .msgcount {
   float:right;
@@ -166,7 +171,6 @@ padding: 10px 10px 5px 10px;
   width: 2%;
   height: 2%;
   }
-
 .friendrequest {
 margin-bottom:1%;
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <title>Nutzereinstellungen</title>
+</head>
+
+<body>
+    <!--Eingabefunktion und submit mithilfe von Buttons-->
+    <form>
+        <h2>Profile Settings</h2>
+        <fieldset title="Base Data" class="align-center">
+            <legend>Base Data:</legend>
+            <div>
+                <label>First Name</label>
+                <input placeholder="Your Name" type="text" value="" size="20" maxlength="50" />
+            </div> 
+            <div>
+                <label>Last Name</label>
+                <input placeholder="Your Surname" type="text" value="" size="20" maxlength="50" />
+            </div>   
+            <div>
+                <label>Coffee or Tea</label> 
+                <select class="beverage" name="hotbeverage" id="beverage" maxlength="50">
+                    <option value="neither nor">Neither nor</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="tea">Tea</option>
+                </select>
+            </div>  
+        </fieldset>
+        <fieldset >
+            <legend>Tell me Something about you:</legend>
+            <input class="big"  placeholder="Some Comment here"/>
+        </fieldset>
+        <fieldset>
+            <legend>Präferenz</legend>
+            <div class="beverageleft">
+                <div class="block">
+                    <input type="radio" id="oneline" name="displaymethod">
+                    <label for="oneline"> Username and Message in one Line</label>
+                </div>
+                <div class="block">
+                    <input type="radio" id="sepline" name="displaymethod">
+                    <label for="sepline"> Username and Message in seperate Lines</label>
+                </div>               
+            </div>
+        </fieldset>
+        <div class="align-center">
+            <button>
+                Cancel
+            </button>
+            <button>
+                Save
+            </button>
+        </div>
+    </form>
+</body>

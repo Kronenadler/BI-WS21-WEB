@@ -1,0 +1,60 @@
+/*
+ * Stylesheet for all sites in general
+ * ----------
+ */
+
+@media only screen and (max-width: 900px) {
+    [class*='col-'] {
+        width: 90%;
+    }
+
+    .full-screen {
+        width: 100%;
+    }
+}
+
+ /* General properties of the whole site
+    > width of 900px moved to the middle */
+body {
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+    width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+/* General style for the title */
+.title {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+/* Style for any bordered box */
+.box {
+    background-color: white;
+    border-style: dotted;
+    border-color: #bbbbbb;
+    margin: 1% 1%;
+}
+
+/*
+ * Buttons
+ */
+button.btn {
+    background-color: #aaaaaa;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+button.btn:hover {
+    background-color: #007bff;
+}
+
+a.btn_link {
+    text-decoration: none;
+}

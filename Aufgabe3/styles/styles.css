@@ -27,7 +27,7 @@
     float:left;
     text-align:center;
       }
-  #frInsertUsername {
+  .frInsertUsername {
     margin-top: 10%;
     width:38%;
   }
@@ -44,7 +44,7 @@
   #password {
     padding-right:3%;
   }
-  #button1 {
+  #button {
     width:100%; 
     float:left; 
   }
@@ -53,7 +53,10 @@
   padding:auto;
   float:none;
 }
-
+.msgcount {
+  padding-right:15px;
+  text-align:center;
+}
 
 }
 * {
@@ -92,6 +95,7 @@ legend.login {
   padding: 0px 0px;
   margin-left: 5px;
 }
+
 #username {
   position:relative;
   margin-left:95px;
@@ -156,16 +160,17 @@ list-style-type:none;
 margin-top: 15px;
 margin-bottom: 15px;
 padding: 10px 10px 5px 10px;
+
 }   
 .msgcount {
-float:right;
-text-align:right;
-background-color:blue;
-color:white;
-border-style:none;
-width: 2%;
-height: 2%;
-}
+  float:right;
+  text-align:right;
+  background-color:blue;
+  color:white;
+  border-style:none;
+  width: 2%;
+  height: 2%;
+  }
 .friendrequest {
 margin-bottom:1%;
 }
@@ -176,7 +181,7 @@ padding: 0;
 width: 100%;
 }
 
-#frInsertUsername {
+.frInsertUsername {
 text-decoration: none;
 margin-top:1%;
 font-size:0.85em;
@@ -206,11 +211,6 @@ a:link.dangerous {
 a:link {
     color: blue;
     text-decoration: none;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: green;
   }
   
   /* mouse over link */
@@ -266,18 +266,32 @@ a:link {
   .block{
     display: block;
     box-sizing: border-box;
-    margin: 1em;
-    float: left;
+    margin: 1em 0em;
   }
 
-  input.big {
+  textarea.big {
     margin: auto;
     width: 100%;
-    height: 10em;
-    text-align:start;
+    box-sizing: border-box;
+    height: 8em;
+    align-content: flex-start;
   }
 
-  select.beverage{
-    height: 2em;
-    width: 15em;
+  button{
+    width: 7em;
+    height: 3em;
+    background-color: gray;
+    color: white;
   }
+
+.fixed{
+  height: 2em;
+  width: 15em;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.fixedlabel{
+  padding: 0em 10px;
+  box-sizing: border-box;
+}

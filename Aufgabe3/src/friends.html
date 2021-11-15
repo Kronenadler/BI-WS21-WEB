@@ -9,6 +9,7 @@ ggf. zu den Nutzerprofil-Einstellungen.->
 
 <header>
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="../scripts/friends.js"></script>
     <title>
         Friendslist
     </title>
@@ -34,9 +35,13 @@ ggf. zu den Nutzerprofil-Einstellungen.->
     <li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li>
 </ol>
 <hr class="friendslist">
-<input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20" maxlength="50;" />
+<input class="frInsertUsername" placeholder="Add Friend to List" type="text"
+ name="Username" value="" size="20" maxlength="50;"
+ list="names" onkeyup="keyup(this)"/>
+<datalist id="names">
+    <option value="Test"></option>
+</datalist>
 <a href="#add"> <!--id="link"-->
     <button class="sendFR" >Add</button>
 </a>
-
 </body>

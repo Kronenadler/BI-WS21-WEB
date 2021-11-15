@@ -48,4 +48,16 @@ img {
 .legend_login {
     font-family: sans-serif;
 }
+.form-control.success input {
+	border-color: #2ecc71;
+    background-color: #2ecc71;
+}
 
+.form-control.error input {
+	border-color: #e74c3c;
+    border-color: #e74c3c;
+}
+input:focus {
+    border-bottom-style:dashed 1em solid red;
+    background-color: grey;
+}

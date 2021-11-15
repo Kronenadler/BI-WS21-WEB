@@ -16,36 +16,38 @@
 <!--
     Body
 -->
+
 <body class="full-screen">
     <img src="../images/user.png">
 
     <h1 class="title">Register yourself</h1>
 
-    <fieldset class="box" method="get">
-        <legend class="legend_login">Register</legend>
+    <form name="myForm" id="form" action="./friends.html" onsubmit="return goOn()" method="post">
+        <fieldset class="box" method="get">
+            <legend class="legend_login">Register</legend>
 
-        <p class="max-small">
-            <label for="Username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username">
-        </p>
-        <p class="max-small">
-            <label for="Password">Password</label>
-            <input type="password" id="psw" name="psw" placeholder="Password">
-        </p>
-        <p class="max-small">
-            <label for="Password">Confirm Password</label>
-            <input type="password" id="psw" name="psw" placeholder="Repeat Password">
-        </p>
-    </fieldset>
+            <p class="max-small">
+                <label for="Username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+            </p>
+            <p class="max-small">
+                <label for="Password">Password</label>
+                <input type="password" id="password" name="psw" placeholder="Password">
+            </p>
+            <p class="max-small">
+                <label for="Password">Confirm Password</label>
+                <input type="password" id="password2" name="psw" placeholder="Repeat Password">
+            </p>
 
-    <div id="bottom_btns">
-        <a href="./login.html" class="btn_link">
-            <button class="btn">Cancel</button>
-        </a>
-        
-        <a href="./friends.html" class="btn_link">
-            <button class="btn" type="submit">Create Account</button>
-        </a>
-    </div>
-    
+        </fieldset>
+        <div id="bottom_btns">
+            <button class="btn" onclick="location.href='./login.html'" type="button">Cancel</button>           
+            <button class="btn" type="submit" value="Submit">Create Account</button>
+        </form>
+        </div>
+    </form>
+
+    <script src="../scripts/dwjavascript.js"></script>
+
+
 </body>

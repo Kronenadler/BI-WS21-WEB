@@ -97,6 +97,7 @@ function sendMessage() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
 
             console.log("Message sent!"); //Todo
+            getMessages();
         }
     };
 

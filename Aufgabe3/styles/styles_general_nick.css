@@ -3,7 +3,7 @@
  * ----------
  */
 
-@media only screen and (max-width: 900px) {
+ @media only screen and (max-width: 900px) {
     [class*='col-'] {
         width: 90%;
     }
@@ -57,28 +57,4 @@ button.btn:hover {
 
 a.btn_link {
     text-decoration: none;
-}
-
-/*
- * Links
- */
-/* unvisited link */
-a:link {
-    color: blue;
-    text-decoration: none;
-}
-  
-/* visited link */
-a:visited {
-    color: green;
-}
-  
-/* mouse over link */
-a:hover {
-    color:lightblue;
-}
-  
-/* selected link */
-a:active {
-    color: blue;
 }

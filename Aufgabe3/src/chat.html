@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="../styles/styles_chat_nick.css">
 
     <script src="../scripts/chat.js"></script>
+    
+    <!-- User Token Stuff -->
+    <script>
+        const chat = {
+            "url": "https://online-lectures-cs.thi.de/chat",
+            "collection_id": "8cc791e3-93c6-422a-a3bd-461163934c10",
+            "currentUser": "Tom",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM2ODg0NjAxfQ.R7I9YHGJ-F03QFzHEt0B4lygZZ6p2XDRePR49easuo4",
+            "messagedUser": "Jerry"
+        };
+    </script>
 
     <title>Chat</title>
 </header>
@@ -19,16 +30,17 @@
 <!--
     Body
 -->
+
 <body class="full-screen">
     <h1 id="chat_title" class="title">Chat with NAME</h1>
 
     <!-- Menu-->
     <p id="nav_header">
-        <a href="./friends.html">&lt; Back</a> | 
-        <a href="./profile/profile.html">Profile</a> | 
+        <a href="./friends.html">&lt; Back</a> |
+        <a href="./profile/profile.html">Profile</a> |
         <a href="./friends.html">Remove Friend</a>
     </p>
-    
+
 
 
     <!-- Chat messages -->
@@ -43,7 +55,7 @@
         <input id="message_form_input" type="text" placeholder="New Message">
         <button class="btn" type="submit">Send</button>
     </form>
-    
+
 
 
     <script>

@@ -1,11 +1,4 @@
-// Chat-API Token - Todo: move to somewhere not in this file
-const chat = {
-    "url": "https://online-lectures-cs.thi.de/chat",
-    "collection_id": "8cc791e3-93c6-422a-a3bd-461163934c10",
-    "currentUser": "Tom",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM2ODg0NjAxfQ.R7I9YHGJ-F03QFzHEt0B4lygZZ6p2XDRePR49easuo4",
-    "messagedUser": "Jerry"
-};
+// Save the string of last messages, so we don't have to update the div all over again every 2 seconds
 let last_msgs = "";
 
 /**
@@ -24,6 +17,8 @@ function main() {
         getMessages();
     }, 2000);
 }
+
+
 
 /**
  * Requests and receives all sent messages from the server
@@ -74,6 +69,8 @@ function displayMessages(data) {
     message_box.innerHTML = messages_html;
 }
 
+
+
 /**
  * Send the actual message to the test Server
  */
@@ -89,14 +86,14 @@ function sendMessage() {
     msg.message = input.value;
     input.value = "";
 
-    console.log(JSON.stringify(msg)); //Todo
+    //console.log(JSON.stringify(msg)); //Todo
 
     // Create POST message
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
 
-            console.log("Message sent!"); //Todo
+            //console.log("Message sent!"); //Todo
             getMessages();
         }
     };

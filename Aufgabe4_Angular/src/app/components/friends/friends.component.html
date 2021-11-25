@@ -1,1 +1,26 @@
-<h1>FriendsComponent works!</h1>
+<h1>Friends</h1>
+<a href="./logout.html" id="link"> &lt; Log out</a>
+<span>|</span>
+<a href="./profile/settings.html" id="link">Settings</a>
+<hr class="friendslist">
+<ul class="friends">
+    <li id="friendslist"><a href="./chat.html">Tom<button class="msgcount">3</button></a></li>
+    <li id="friendslist"><a href="./chat.html">Marvin<button class="msgcount">3</button></a></li>
+    <li id="friendslist">Tick</li>
+    <li id="friendslist">Trick</li>
+</ul>
+<hr class="friendslist">
+<h2>New Requests:</h2>
+<ol>
+    <li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li>
+</ol>
+<hr class="friendslist">
+<input class="frInsertUsername" placeholder="Add Friend to List" type="text"
+ name="Username" value="" size="20" maxlength="50;"
+ list="names" onkeyup="keyup(this)"/>
+<datalist id="names">
+    <option value="Test"></option>
+</datalist>
+<a href="#add"> <!--id="link"-->
+    <button class="sendFR" >Add</button>
+</a>

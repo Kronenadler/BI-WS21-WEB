@@ -1,1 +1,296 @@
 /* You can add global styles to this file, and also import other style files */
+@media only screen and (max-width: 900px) {
+    [class*='col-'] {
+        width: 100%;
+      }
+    
+      body.login {
+        max-width: 98%;
+      }
+      body.friends {
+        max-width: 98%;
+        margin:1%;
+      }
+      div.logout {
+        font-size:larger;
+      }
+      fieldset
+       {
+        background-color:red;
+        min-width:98%; 
+        margin-left:1%;
+        margin-right:1%;
+      }
+      button.sendFR {
+        width:100%;
+        float:left;
+        text-align:center;
+          }
+      .frInsertUsername {
+        margin-top: 10%;
+        width:38%;
+      }
+      img.login {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        float: center;  }
+      #password, #username {
+        text-align:center;  
+        width: 0%;
+      }
+      #password {
+        padding-right:3%;
+      }
+      #button {
+        width:100%; 
+        float:left; 
+      }
+      .input-login {
+      text-align:center;
+      padding:auto;
+      float:none;
+    }
+    .msgcount {
+      padding-right:15px;
+      text-align:center;
+    }
+    
+    }
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    }
+    body {
+      background-color:rgb(231, 231, 231);
+      max-width:900px;
+      margin: auto;
+    }
+    
+    body.login {
+      align-self:center;
+      text-align: center;
+      margin-top:10px;
+    }
+    
+    body.friends{
+      max-width:900px;
+      text-align:left;
+      align-self:left;
+      margin-left: 1%;
+      }
+    fieldset.login{
+      background-color:white;
+      border-style:dotted;
+      margin: auto;
+      width:50%;
+      padding:0px;
+    }
+    legend.login {
+      text-align:left;
+      color: black;
+      width: 41px;
+      padding: 0px 0px;
+      margin-left: 5px;
+    }
+    
+    #username {
+      position:relative;
+      margin-left:95px;
+      text-align: center;
+      box-sizing: border-box;
+      height:auto;
+      padding-bottom:0px;
+      margin-bottom:0px;
+      margin-top:2%;
+      margin-right:0%;
+      float:center;
+      min-width:50%;
+    
+    }
+    
+    #password {
+      margin-left:100px;
+      text-align: center;
+      box-sizing: border-box;
+      height:auto;
+      margin-top:1%;
+      margin-bottom:1%;
+      margin-right:0%;
+      float:center;
+      min-width:50%;
+      
+    }
+    
+    #button {
+      text-align: center;  
+      border:none;
+      padding:7px 15px 7px 15px;
+      color:white;
+      margin: 5px 0px 0px 0px;
+      font-size: 1em;
+    }
+    
+    button.grey {
+      background-color: lightgrey;
+    }
+    button.blue {
+      background-color:blue; 
+    }
+    button:hover {
+      background-color:purple;
+    }
+    img.login{
+      margin-bottom:-15px;
+      width:15%;
+      border-radius: 50%;
+    }
+    hr.friendslist { 
+    border: 1px dashed rgb(93, 91, 91);
+    margin: auto;
+    margin-top:1%;
+    }
+    ul.friends{
+    background-color:white;
+    border-radius:4px;
+    border:1px solid grey;
+    list-style-type:none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px 10px 5px 10px;
+    
+    }   
+    .msgcount {
+      float:right;
+      text-align:right;
+      background-color:blue;
+      color:white;
+      border-style:none;
+      width: 2%;
+      height: 2%;
+      }
+    .friendrequest {
+    margin-bottom:1%;
+    }
+    #friendslist{
+    list-style-type: none;
+    margin-bottom:15px;
+    padding: 0;
+    width: 100%;
+    }
+    
+    .frInsertUsername {
+    text-decoration: none;
+    margin-top:1%;
+    font-size:0.85em;
+    padding: 1% 60% 1% 1%;
+    }
+    .sendFR {
+    background-color: grey;
+    color:white;
+    font-size:0.85em;
+    float:right;
+    text-align: center;  
+    border:none;
+    padding:1.25% 10% 1.25% 7%;
+    margin-top: 1%;
+    }
+    
+    
+    
+    /* Style für "gefährliche" Links die rot markiert werden sollen */
+    
+    a:link.dangerous { 
+        color: red;
+        text-decoration: none;
+      }
+    
+    /* unvisited link */
+    a:link {
+        color: blue;
+        text-decoration: none;
+      }
+      
+      /* mouse over link */
+      a:hover {
+        color:lightblue;
+      }
+      
+      /* selected link */
+      a:active {
+        color: blue;
+      }
+    
+    
+    /* Center Alignment für alle Elemente mit class="center"*/
+      .center {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+        float: left;
+      }
+    
+      .align-center {
+        display: block;
+        margin: 1.0em auto;
+        text-align: center;
+    }
+    
+    /* Right Alignment */
+      .right {
+        width: 70%;
+        float: right;
+        box-sizing: border-box;
+        border: 2px solid grey;
+        padding: 10;
+      }
+    
+      /* Left Alignment */
+      .left {
+        width: 30%;
+        float: left;
+        box-sizing: border-box;
+        padding: 0 15 0 0;
+        margin: auto;
+      }
+    
+      div.beverageleft{
+        float: left;
+        box-sizing: border-box;
+        margin: auto;
+        text-align: left;
+      }
+    
+      .block{
+        display: block;
+        box-sizing: border-box;
+        margin: 1em 0em;
+      }
+    
+      textarea.big {
+        margin: auto;
+        width: 100%;
+        box-sizing: border-box;
+        height: 8em;
+        align-content: flex-start;
+      }
+    
+      button{
+        width: 7em;
+        height: 3em;
+        background-color: gray;
+        color: white;
+      }
+    
+    .fixed{
+      height: 2em;
+      width: 15em;
+      box-sizing: border-box;
+      background-color: white;
+    }
+    
+    .fixedlabel{
+      padding: 0em 10px;
+      box-sizing: border-box;
+    }

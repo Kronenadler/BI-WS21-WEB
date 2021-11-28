@@ -3,27 +3,43 @@
 <span>|</span>
 <a routerLink="/settings" id="link">Settings</a>
 
+<!-- List of friends -->
 <hr class="friendslist">
 <ul class="friends">
+    <li id="friendslist" *ngFor="let friend of user.friends" (click)="chatFriend(friend)">{{friend}}<button class="msgcount">x</button></li>
+    <li id="friendslist" *ngIf="user.friends.length === 0">You currently don't have any friends!</li>
+    <!--
     <li id="friendslist"><a routerLink="/chat">Tom<button class="msgcount">3</button></a></li>
     <li id="friendslist"><a routerLink="/chat">Marvin<button class="msgcount">3</button></a></li>
     <li id="friendslist">Tick</li>
-    <li id="friendslist">Trick</li>
+    <li id="friendslist">Trick</li>-->
 </ul>
 
+<!-- List of requests -->
 <hr class="friendslist">
 <h2>New Requests:</h2>
 <ol>
-    <li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li>
+    <li *ngFor="let req of user.requests" class="friendrequest">{{req}}
+        <button (click)="acceptFriend(req)">Accept</button>
+        <button (click)="declineFriend(req)">Decline</button>
+    </li>
+    <li *ngIf="user.requests.length === 0" class="friendrequest">There are currently no friend requests!</li>
+    <!--li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li-->
 </ol>
 
+<!-- Field to add friends to list -->
 <hr class="friendslist">
-<input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20"
+<form>
+    <input class="frInsertUsername" placeholder="Add Friend to List" type="text" [(ngModel)]="friendToAdd" #newFriend="ngModel" />
+    <button class="sendFR" (click)="addFriend()">Add</button>
+</form>
+
+
+<!--input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20"
     maxlength="50;" list="names" onkeyup="keyup(this)" />
 <datalist id="names">
     <option value="Test"></option>
 </datalist>
 <a href="#add">
-    <!--id="link"-->
     <button class="sendFR">Add</button>
-</a>
+</a-->

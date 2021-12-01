@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Profile } from 'src/app/models/Profile';
 
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+
+    public profile: Profile; 
+
     public constructor() {
+        this.profile = new Profile('', '', '', '', '');
     }
 
     public ngOnInit(): void {
+    }
+
+    public saveSettings(): void{
+
+    }
+
+    public cancelSettings(): void{
+
     }
 }

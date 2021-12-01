@@ -10,20 +10,25 @@
                 </p>
                 <p>
                     <label class="fixedlabel">Last Name</label>
-                    <input class="fixed" placeholder="Your Surname" type="text" value=""/> 
+                    <input class="fixed" placeholder="Your Surname" type="text" /> 
                 </p>
                 <p>Coffee or Tea
-                    <select class="fixed" name="hotbeverage" id="beverage">
-                        <option value="neither nor">Neither nor</option>
-                        <option value="Coffee">Coffee</option>
-                        <option value="tea">Tea</option>
+                    <select [(ngModel)]="profile.coffeeOrTea" name="coffeeOrTeaSelect">
+                        <option [ngValue]="1" [selected]="profile.coffeeOrTea == '1'">
+                        Neither Nor</option>
+                        <option [ngValue]="2" [selected]="profile.coffeeOrTea == '2'">
+                        Coffee</option>
+                        <option [ngValue]="3" [selected]="profile.coffeeOrTea == '3'">
+                        Tea</option>
                     </select>
                 </p> 
             </div> 
         </fieldset>
         <fieldset style="padding: 0.7em; box-sizing: border-box;">
             <legend>Tell me Something about you:</legend>
-            <textarea class="big"  placeholder="Some Comment here"></textarea>
+            <textarea name="description" #about="ngModel"
+                        [(ngModel)]="profile.description" row="5">
+            </textarea>
         </fieldset>
         <fieldset>
             <legend>Präferenz</legend>
@@ -39,10 +44,10 @@
             </div>
         </fieldset>
         <div class="align-center">
-            <button>
+            <button (click)="cancelSettings()">
                 Cancel
             </button>
-            <button class="blue">
+            <button class="blue" (click)="saveSettings()">
                 Save
             </button>
         </div>

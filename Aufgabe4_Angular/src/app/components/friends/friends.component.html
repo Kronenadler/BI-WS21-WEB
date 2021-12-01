@@ -30,7 +30,7 @@
 <!-- Field to add friends to list -->
 <hr class="friendslist">
 <form>
-    <input class="frInsertUsername" placeholder="Add Friend to List" type="text" [(ngModel)]="friendToAdd" #newFriend="ngModel" />
+    <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="friendToAdd" [(ngModel)]="friendToAdd" #newFriend="ngModel" />
     <button class="sendFR" (click)="addFriend()">Add</button>
 </form>
 

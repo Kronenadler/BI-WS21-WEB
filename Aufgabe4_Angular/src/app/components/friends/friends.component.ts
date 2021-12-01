@@ -15,18 +15,20 @@ export class FriendsComponent implements OnInit {
 
     public user: User;
     public friends: Array<Friend>;
-    public backendService: BackendService;
+    public requests: Array<Friend>;
+    //public backendService: BackendService;
 
     public friendToAdd: string;
 
     /*
      * Initialize Site
      */
-    public constructor() {
-        this.backendService = new BackendService(new HttpClient(), new ContextService);
+    public constructor(private contextService: ContextService, private backendService: BackendService) {
+        //this.backendService = new BackendService(null, new ContextService);
 
         this.user = new User();
         this.friends = new Array();
+        this.requests = new Array();
 
         this.friendToAdd = "";
 
@@ -44,14 +46,15 @@ export class FriendsComponent implements OnInit {
 
     public loadData(): void {
         // Load User
-        this.backendService.loadCurrentUser().then((usr: User|null) => {
+        // shouldn't be neacessary
+        /*this.backendService.loadCurrentUser().then((usr: User|null) => {
             if(usr != null) {
                 console.log("Loaded User"); //Todo
                 this.user = usr;
             } else {
                 console.log("Failed loading current User!");
             }
-        });
+        });*/
 
         // Load friends
         this.backendService.loadFriends().then((friends: Array<Friend>) => {

@@ -4,20 +4,24 @@
 <p id="nav_header">
     <a routerLink="/friends">&lt; Back</a> | 
     <a routerLink="/profile">Profile</a> | 
-    <a routerLink="/friendsf">Remove Friend</a>
+    <a routerLink="/friendsf">Remove Friend</a> <!-- Todo: Implement -->
 </p>
 
 
 
 <!-- Chat messages -->
 <div id="message_box" class="box">
-    <div>
+    <div *ngIf="messages.length === 0">
         <label>There are currently no text messages</label>
+    </div>
+    <div *ngFor="let message of messages">
+        <label><b>{{message.from}}</b>: {{message.msg}}</label>
+        <label class="timestamp">{{message.time}}</label>
     </div>
 </div>
 
 <!-- New message -->
-<form id="message_form" method="post" onsubmit="sendMessage(); return false">
-    <input id="message_form_input" type="text" placeholder="New Message">
-    <button class="btn" type="submit">Send</button>
+<form id="message_form" role="form" #messageForm="ngForm">
+    <input id="message_form_input" type="text" placeholder="New Message" name="newMsg" [(ngModel)]="newMsg" #newMessage="ngModel"> <!-- Todo: Clear when sent! -->
+    <button class="btn" (click)="sendMessage(messageForm)">Send</button>
 </form>

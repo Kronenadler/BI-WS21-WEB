@@ -1,13 +1,13 @@
 <h1>Friends</h1>
 <a routerLink="/logout" id="link"> &lt; Log out</a>
-<span>|</span>
+<span> | </span>
 <a routerLink="/settings" id="link">Settings</a>
 
 <!-- List of friends -->
 <hr class="friendslist">
 <ul class="friends">
-    <li id="friendslist" *ngFor="let friend of user.friends" (click)="chatFriend(friend)">{{friend}}<button class="msgcount">x</button></li>
-    <li id="friendslist" *ngIf="user.friends.length === 0">You currently don't have any friends!</li>
+    <li id="friendslist" *ngFor="let friend of friends" (click)="chatFriend(friend)">{{friend}}<button class="msgcount">{{friend.unreadMessages}}</button></li>
+    <li id="friendslist" *ngIf="friends.length === 0">You currently don't have any friends!</li> <!-- Todo: What if only requests?! -->
     <!--
     <li id="friendslist"><a routerLink="/chat">Tom<button class="msgcount">3</button></a></li>
     <li id="friendslist"><a routerLink="/chat">Marvin<button class="msgcount">3</button></a></li>
@@ -19,11 +19,11 @@
 <hr class="friendslist">
 <h2>New Requests:</h2>
 <ol>
-    <li *ngFor="let req of user.requests" class="friendrequest">{{req}}
+    <li *ngFor="let req of requests" class="friendrequest">{{req}}
         <button (click)="acceptFriend(req)">Accept</button>
         <button (click)="declineFriend(req)">Decline</button>
     </li>
-    <li *ngIf="user.requests.length === 0" class="friendrequest">There are currently no friend requests!</li>
+    <li *ngIf="requests.length === 0" class="friendrequest">There are currently no friend requests!</li> <!-- Todo: What if only requests?! -->
     <!--li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li-->
 </ol>
 

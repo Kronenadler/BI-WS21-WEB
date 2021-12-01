@@ -12,11 +12,12 @@ import { ContextService } from './context.service';
 export class BackendService {
     private baseURL: string = 'https://online-lectures-cs.thi.de/chat/';
     // https://online-lectures-cs.thi.de/chat/full/3bc43120-4f0a-48fb-8be3-b26656e65534
-    private serverId: string = '3bc43120-4f0a-48fb-8be3-b26656e65534';
+    private serverId: string = 'c5eb5a1b-2e79-483a-8a9c-98b9eabced09';
     private restServerURL: string = this.baseURL + this.serverId + '/';
     private headers: any; // header for token
 
     public constructor(private httpClient: HttpClient, private context: ContextService) { 
+        
     }
 
     public login(username: string, password: string): Promise<boolean> {
@@ -48,8 +49,8 @@ export class BackendService {
     public userExists(username: string): Promise<boolean> {
         return this.httpClient.get(this.restServerURL + 'user/' + username)
         .toPromise()
-        .then(() => Promise.resolve(true))
-        .catch(() => Promise.resolve(false));
+        .then(() =>  { console.log("promis true"); return Promise.resolve(true)})
+        .catch(() => { console.log("promis false"); return Promise.resolve(false)});
     }
 
     public loadCurrentUser(): Promise<User | null> {

@@ -8,20 +8,20 @@
 
         <p class="max-small">
             <label for="Username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username">
+            <input (keyup)="checkUsername()" [(ngModel)]='username' type="text" id="username" name="username" placeholder="Username">
         </p>
         <p class="max-small">
             <label for="Password">Password</label>
-            <input type="password" id="password" name="psw" placeholder="Password">
+            <input (keyup)="checkPassword1()" [(ngModel)]='password1' type="password" id="password" name="psw" placeholder="Password">
         </p>
         <p class="max-small">
             <label for="Password">Confirm Password</label>
-            <input type="password" id="password2" name="psw" placeholder="Repeat Password">
+            <input (keyup)="checkPassword2()" [(ngModel)]='password2' type="password" id="password2" name="psw" placeholder="Repeat Password">
         </p>
 
     </fieldset>
     <div id="bottom_btns">
         <button class="btn" onclick="location.href='./login.html'" type="button">Cancel</button>           
-        <button class="btn" type="submit" value="Submit">Create Account</button>
+        <button class="btn" type="button" (click)="createAccount()" value="Submit" [disabled]="!usernameOk ||!passwordOk">Create Account</button>
     </div>
 </form>

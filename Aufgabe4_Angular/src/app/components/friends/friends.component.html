@@ -6,7 +6,7 @@
 <!-- List of friends -->
 <hr class="friendslist">
 <ul class="friends">
-    <li id="friendslist" *ngFor="let friend of friends" (click)="chatFriend(friend)">{{friend}}<button class="msgcount">{{friend.unreadMessages}}</button></li>
+    <li id="friendslist" *ngFor="let friend of friends" (click)="chatFriend(friend)"><a>{{friend.username}}<button class="msgcount">{{friend.unreadMessages}}</button></a></li>
     <li id="friendslist" *ngIf="friends.length === 0">You currently don't have any friends!</li> <!-- Todo: What if only requests?! -->
     <!--
     <li id="friendslist"><a routerLink="/chat">Tom<button class="msgcount">3</button></a></li>
@@ -29,10 +29,14 @@
 
 <!-- Field to add friends to list -->
 <hr class="friendslist">
-<form>
+<form role="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm)">
+    <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="friendToAdd" [(ngModel)]="friendToAdd" required #addFriendInput="ngModel">
+    <button class="sendFR" type="submit">Add</button>
+</form>
+<!--form>
     <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="friendToAdd" [(ngModel)]="friendToAdd" #newFriend="ngModel" />
     <button class="sendFR" (click)="addFriend()">Add</button>
-</form>
+</form-->
 
 
 <!--input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20"

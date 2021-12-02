@@ -4,6 +4,7 @@ import { User } from 'src/app/models/User';
 import { Friend } from 'src/app/models/Friend';
 import { ContextService } from 'src/app/services/context.service';
 import { BackendService } from '../../services/backend.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-friends',
@@ -53,6 +54,7 @@ export class FriendsComponent implements OnInit {
                 this.user = usr;
             } else {
                 console.log("Failed loading current User!");
+                this.router.navigate(['/login']); // Todo: This right? & necessary?
             }
         });
 
@@ -71,6 +73,9 @@ export class FriendsComponent implements OnInit {
      */
     public chatFriend(friend: Friend): void {
         this.contextService.currentChatUsername = friend.username;
+
+        console.log("Current User: " + this.contextService.loggedInUsername); // Todo Remove
+        console.log("Chatted User: " + this.contextService.currentChatUsername); // Todo Remove
         this.router.navigate(['/chat']);
     }
 
@@ -84,7 +89,18 @@ export class FriendsComponent implements OnInit {
         this.loadData();
     }
 
-    public addFriend(): void {
-        console.log(this.friendToAdd); // Todo
+    public addFriend(addFriendForm: NgForm): void {
+        if(this.friendToAdd != ""){
+            console.log("Friend to Add: " + this.friendToAdd); // Todo Remove
+            this.backendService.friendRequest(this.friendToAdd).then((ok: boolean) => {
+                if(!ok){
+                    console.log("Couldn't add friend!");
+                }
+            });
+            addFriendForm.reset();
+            this.loadData();
+        } else {
+            console.log("Add button pressed, but noone to add!");
+        }
     }
 }

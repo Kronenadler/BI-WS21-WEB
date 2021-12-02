@@ -3,18 +3,19 @@
  * ----------
  */
 
- @media only screen and (max-width: 900px) {
+@media only screen and (max-width: 900px) {
     [class*='col-'] {
         width: 90%;
     }
-
     .full-screen {
         width: 100%;
     }
 }
 
- /* General properties of the whole site
+
+/* General properties of the whole site
     > width of 900px moved to the middle */
+
 body {
     background-color: #f4f4f4;
     box-sizing: border-box;
@@ -23,13 +24,17 @@ body {
     text-align: center;
 }
 
+
 /* General style for the title */
+
 .title {
     font-family: sans-serif;
     font-weight: bold;
 }
 
+
 /* Style for any bordered box */
+
 .box {
     background-color: white;
     border-style: dotted;
@@ -37,9 +42,11 @@ body {
     margin: 1% 1%;
 }
 
+
 /*
  * Buttons
  */
+
 button.btn {
     background-color: #aaaaaa;
     height: 40px;
@@ -65,24 +72,26 @@ a.btn_link {
  *      > has to be merged at some point
  */
 
- #nav_header {
+#nav_header {
     font-family: sans-serif;
     font-weight: bold;
 }
 
-#nav_header > a {
+#nav_header>a {
     font-weight: normal;
 }
+
 
 /*
  * Chatbox
  */
+
 .box {
     border-style: solid;
     border-width: 1px;
 }
 
-.box > div {
+.box>div {
     text-align: left;
     margin: 10px 10px 10px 10px;
 }
@@ -93,23 +102,27 @@ a.btn_link {
 }
 
 .box label.timestamp {
+    width: fit-content;
     text-align: right;
     color: lightgray;
+    float: right;
 }
+
 
 /*
  * New Message Input
  */
-form > input {
+
+form>input {
     height: 36px;
     width: 80%;
 }
 
-form > button {
+form>button {
     width: 15%;
     min-width: 60px;
 }
 
-div > a {
+div>a {
     margin: auto;
 }

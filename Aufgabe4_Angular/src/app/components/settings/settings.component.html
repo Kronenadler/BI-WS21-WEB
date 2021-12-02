@@ -6,11 +6,13 @@
             <div class="inline">
                 <p>
                     <label class="fixedlabel">First Name</label>
-                    <input class="fixed" style="margin: 0 5;" placeholder="Your Name" type="text" value=""/>
+                    <input [(ngModel)]="profile.firstName" class="fixed" name="firstName"
+                     style="margin: 0 5;" placeholder="Your Name" type="text" value=""/>
                 </p>
                 <p>
                     <label class="fixedlabel">Last Name</label>
-                    <input class="fixed" placeholder="Your Surname" type="text" /> 
+                    <input [(ngModel)]="profile.lastName" class="fixed" name="lastName"
+                    placeholder="Your Surname" type="text" /> 
                 </p>
                 <p>Coffee or Tea
                     <select [(ngModel)]="profile.coffeeOrTea" name="coffeeOrTeaSelect">
@@ -34,11 +36,13 @@
             <legend>Präferenz</legend>
             <div class="beverageleft">
                 <div class="block">
-                    <input type="radio" id="oneline" name="displaymethod">
+                    <input [(ngModel)]="profile.layout" type="radio" 
+                    id="oneline" name="displaymethod" name="oneline">
                     <label for="oneline"> Username and Message in one Line</label>
                 </div>
                 <div class="block">
-                    <input type="radio" id="sepline" name="displaymethod">
+                    <input [(ngModel)]="profile.layout" type="radio" 
+                    id="sepline" name="displaymethod" name="sepline">
                     <label for="sepline"> Username and Message in seperate Lines</label>
                 </div>               
             </div>

@@ -21,7 +21,7 @@
 
     </fieldset>
     <div id="bottom_btns">
-        <button class="btn" onclick="location.href='./login.html'" type="button">Cancel</button>           
+        <button class="btn" (click)="cancel()" type="button">Cancel</button>           
         <button class="btn" type="button" (click)="createAccount()" value="Submit" [disabled]="!usernameOk ||!passwordOk">Create Account</button>
     </div>
 </form>

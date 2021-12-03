@@ -18,14 +18,16 @@ export class RegisterComponent implements OnInit {
     public password1Ok: boolean = false;
 
     public constructor(private router: Router, private contextService: ContextService, private backendService: BackendService) {
-        this.backendService.register("sepp", "12345678");
-        console.log("sepp created");
+      //  this.backendService.register("sepp", "12345678");
+     //   console.log("sepp created");
     }
 
     public ngOnInit(): void {
 
     }
-
+    public cancel(): void {
+        this.router.navigate(['/login']);
+    }
     public createAccount(): void {
         console.log(this.usernameOk + " " + this.passwordOk);
         this.backendService.register(this.username, this.password1).then(() => { this.router.navigate(['/login']) });

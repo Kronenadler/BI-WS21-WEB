@@ -12,7 +12,7 @@ import { ContextService } from './context.service';
 export class BackendService {
     private baseURL: string = 'https://online-lectures-cs.thi.de/chat/';
     // https://online-lectures-cs.thi.de/chat/full/3bc43120-4f0a-48fb-8be3-b26656e65534
-    private serverId: string = 'c5eb5a1b-2e79-483a-8a9c-98b9eabced09';
+    private serverId: string = '3bc43120-4f0a-48fb-8be3-b26656e65534';
     private restServerURL: string = this.baseURL + this.serverId + '/';
     private headers: any; // header for token
 
@@ -54,6 +54,7 @@ export class BackendService {
     }
 
     public loadCurrentUser(): Promise<User | null> {
+        console.log('User:' + this.context.loggedInUsername);
         return this.loadUser(this.context.loggedInUsername);
     }
 

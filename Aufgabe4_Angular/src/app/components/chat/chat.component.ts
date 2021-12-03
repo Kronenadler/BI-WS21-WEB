@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
-import { Form } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Message } from 'src/app/models/Message';
 import { BackendService } from 'src/app/services/backend.service';
 import { ContextService } from 'src/app/services/context.service';
@@ -17,12 +17,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     public messages: Array<Message>;
     public newMsg: string;
+    public messagedUser: string;
 
     public constructor(public contextService: ContextService, public backendService: BackendService) { 
         this.myScrollContainer = new ElementRef(null);
 
         this.messages = new Array();
         this.newMsg = "";
+        this.messagedUser = "NAME";
     }
 
     public ngAfterViewChecked() {        
@@ -41,8 +43,10 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     public ngOnInit(): void {
+        this.messagedUser = this.contextService.loggedInUsername;
         this.scrollToBottom();
         this.loadData();
+        // Todo: Interval
     }
 
     public loadData(): void {
@@ -54,7 +58,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         });
     }
 
-    public sendMessage(form: Form): void {
+    public sendMessage(form: NgForm): void {
         if(this.newMsg === ""){
             console.log("Didn't send message: was empty!");
         } else {
@@ -64,8 +68,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
                 } else {
                     console.log("Error sending message!");
                 }
-            })
+            });
+            form.reset();
+            this.loadData();
         }
+    }
+
+    public formatTime(time: number): string {
+        return new Date(time).toLocaleTimeString();
     }
 
 }

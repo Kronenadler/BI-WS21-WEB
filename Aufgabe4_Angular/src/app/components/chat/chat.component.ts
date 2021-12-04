@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Message } from 'src/app/models/Message';
 import { BackendService } from 'src/app/services/backend.service';
 import { ContextService } from 'src/app/services/context.service';
+import { IntervalService } from 'src/app/services/interval.service';
 
 @Component({
   selector: 'app-chat',
@@ -19,7 +21,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public newMsg: string;
     public messagedUser: string;
 
-    public constructor(public contextService: ContextService, public backendService: BackendService) { 
+    public constructor(private router: Router, public contextService: ContextService, public backendService: BackendService,
+            public intervalService: IntervalService) { 
         this.myScrollContainer = new ElementRef(null);
 
         this.messages = new Array();
@@ -45,14 +48,22 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public ngOnInit(): void {
         this.messagedUser = this.contextService.loggedInUsername;
         this.scrollToBottom();
+
+        // Initially load data
         this.loadData();
-        // Todo: Interval
+
+        // Load data every x seconds
+        this.intervalService.setInterval("reloadMessages", () => this.loadData());
+    }
+
+    public ngOnDestroy(): void {
+        this.intervalService.clearIntervals();
     }
 
     public loadData(): void {
         this.backendService.listMessages(this.contextService.currentChatUsername).then((msgs: Array<Message>) => {
             if(msgs.length > 0) {
-                console.log("Loaded Messages!");
+                console.log("Loaded Messages!"); // Todo Remove
                 this.messages = msgs;
             }
         });
@@ -76,6 +87,23 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     public formatTime(time: number): string {
         return new Date(time).toLocaleTimeString();
+    }
+
+    public removeFriend(): void {
+        /*
+
+        TODO:
+        Asking to confirm removal via alert!
+
+        */
+        console.log("Removing Friend " + this.contextService.currentChatUsername);
+        this.backendService.removeFriend(this.contextService.currentChatUsername).then((ok) => {
+            if(ok) {
+                console.log("Removed Friend"); // Todo Remove ?
+                this.router.navigate(['/friends']);
+            }
+                
+        })
     }
 
 }

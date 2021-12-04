@@ -7,24 +7,18 @@
 <hr class="friendslist">
 <ul class="friends">
     <li id="friendslist" *ngFor="let friend of friends" (click)="chatFriend(friend)"><a>{{friend.username}}<button class="msgcount">{{friend.unreadMessages}}</button></a></li>
-    <li id="friendslist" *ngIf="friends.length === 0">You currently don't have any friends!</li> <!-- Todo: What if only requests?! -->
-    <!--
-    <li id="friendslist"><a routerLink="/chat">Tom<button class="msgcount">3</button></a></li>
-    <li id="friendslist"><a routerLink="/chat">Marvin<button class="msgcount">3</button></a></li>
-    <li id="friendslist">Tick</li>
-    <li id="friendslist">Trick</li>-->
+    <li id="friendslist" *ngIf="friends.length === 0">You currently don't have any friends!</li>
 </ul>
 
 <!-- List of requests -->
 <hr class="friendslist">
 <h2>New Requests:</h2>
 <ol>
-    <li *ngFor="let req of requests" class="friendrequest">{{req}}
+    <li *ngFor="let req of requests" class="friendrequest">{{req.username}}
         <button (click)="acceptFriend(req)">Accept</button>
         <button (click)="declineFriend(req)">Decline</button>
     </li>
-    <li *ngIf="requests.length === 0" class="friendrequest">There are currently no friend requests!</li> <!-- Todo: What if only requests?! -->
-    <!--li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li-->
+    <li *ngIf="requests.length === 0" class="friendrequest">There are currently no friend requests!</li>
 </ol>
 
 <!-- Field to add friends to list -->
@@ -33,17 +27,3 @@
     <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="friendToAdd" [(ngModel)]="friendToAdd" required #addFriendInput="ngModel">
     <button class="sendFR" type="submit">Add</button>
 </form>
-<!--form>
-    <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="friendToAdd" [(ngModel)]="friendToAdd" #newFriend="ngModel" />
-    <button class="sendFR" (click)="addFriend()">Add</button>
-</form-->
-
-
-<!--input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20"
-    maxlength="50;" list="names" onkeyup="keyup(this)" />
-<datalist id="names">
-    <option value="Test"></option>
-</datalist>
-<a href="#add">
-    <button class="sendFR">Add</button>
-</a-->

@@ -1,10 +1,11 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { Friend } from 'src/app/models/Friend';
 import { ContextService } from 'src/app/services/context.service';
 import { BackendService } from '../../services/backend.service';
 import { NgForm } from '@angular/forms';
+import { IntervalService } from 'src/app/services/interval.service';
 
 @Component({
     selector: 'app-friends',
@@ -14,48 +15,44 @@ import { NgForm } from '@angular/forms';
 
 export class FriendsComponent implements OnInit {
 
-    public user: User;
     public friends: Array<Friend>;
     public requests: Array<Friend>;
-    //public backendService: BackendService;
+    public unreadMsgs: Map<string, number>;
 
     public friendToAdd: string;
 
     /*
      * Initialize Site
      */
-    public constructor(private router: Router, private contextService: ContextService, private backendService: BackendService) {
-        //this.backendService = new BackendService(null, new ContextService);
+    public constructor(private router: Router, private contextService: ContextService, 
+            private backendService: BackendService, private intervalService: IntervalService) {
 
-        this.user = new User();
+        //this.user = new User();
         this.friends = new Array();
         this.requests = new Array();
+        this.unreadMsgs = new Map();
 
         this.friendToAdd = "";
-
-        // Test
-        /*this.user = new User();
-        this.user.username = "Mickie";
-        this.user.friends = ["Tom", "Peter"];*/
-        //this.user.friends = new Array("Tom", "Peter");
-
     }
 
-    public ngOnInit(): void {        
+    public ngOnInit(): void { 
+        // Initially, load all data       
         this.loadData();
+
+        // Load all the data every x seconds
+        this.intervalService.setInterval("ReloadFriends", () => this.loadData());
+    }
+
+    public ngOnDestroy(): void {
+        this.intervalService.clearIntervals();
     }
 
     public loadData(): void {
-        // Load User
-        // shouldn't be neacessary
-        this.backendService.loadCurrentUser().then((usr: User|null) => {
-            if(usr != null) {
-                console.log("Loaded User"); //Todo
-                this.user = usr;
-            } else {
-                console.log("Failed loading current User!");
-                this.router.navigate(['/login']); // Todo: This right? & necessary?
-            }
+        console.log("----- Loading Data -----"); // Todo Remove
+
+        // Load unread messages
+        this.backendService.unreadMessageCounts().then((counts: Map<string, number>) => {
+            this.unreadMsgs = counts;
         });
 
         // Load friends
@@ -63,7 +60,27 @@ export class FriendsComponent implements OnInit {
         this.backendService.loadFriends().then((friends: Array<Friend>) => {
             if(friends.length > 0) {
                 console.log("Loaded Friends"); //Todo Remove
-                this.friends = friends;
+
+                // Add the unread messages count to the friends
+                for(let friend of friends){
+                    console.log("Friend: " + friend.username + " - " + friend.status); // Todo Remove
+                    let i = this.unreadMsgs.get(friend.username);
+                    if(i != undefined)
+                        friend.unreadMessages = i; 
+                    else {
+                        friend.unreadMessages = 0;
+                        console.log("Couldn't load unread messages for friend " + friend.username + "!");
+                    }
+                }
+
+                // Fill all accepted friends to list
+                this.friends = friends.filter((friend: Friend) => {
+                    return friend.status === "accepted";
+                });
+                // Fill all requested friends to list
+                this.requests = friends.filter((friend: Friend) => {
+                    return friend.status === "requested";
+                });
             }
         });
     }
@@ -76,17 +93,16 @@ export class FriendsComponent implements OnInit {
 
         console.log("Current User: " + this.contextService.loggedInUsername); // Todo Remove
         console.log("Chatted User: " + this.contextService.currentChatUsername); // Todo Remove
+        this.intervalService.clearIntervals();
         this.router.navigate(['/chat']);
     }
 
     public acceptFriend(friend: Friend): void {
-        this.backendService.acceptFriendRequest(friend.username);
-        this.loadData();
+        this.backendService.acceptFriendRequest(friend.username).then(() => this.loadData());
     }
 
     public declineFriend(friend: Friend): void {
-        this.backendService.dismissFriendRequest(friend.username);
-        this.loadData();
+        this.backendService.dismissFriendRequest(friend.username).then(() => this.loadData());
     }
 
     public addFriend(addFriendForm: NgForm): void {
@@ -95,10 +111,10 @@ export class FriendsComponent implements OnInit {
             this.backendService.friendRequest(this.friendToAdd).then((ok: boolean) => {
                 if(!ok){
                     console.log("Couldn't add friend!");
-                }
+                } else
+                    this.loadData();
             });
             addFriendForm.reset();
-            this.loadData();
         } else {
             console.log("Add button pressed, but noone to add!");
         }

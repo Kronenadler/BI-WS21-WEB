@@ -1,12 +1,10 @@
-<h1 id="chat_title" class="title">Chat with {{this.messagedUser}}NAME</h1>
-<!-- Todo -->
+<h1 id="chat_title" class="title">Chat with {{this.messagedUser}}</h1>
 
 <!-- Menu-->
 <p id="nav_header">
     <a routerLink="/friends">&lt; Back</a> |
     <a routerLink="/profile">Profile</a> |
-    <a routerLink="/friendsf">Remove Friend</a>
-    <!-- Todo: Implement -->
+    <a (click)="removeFriend()">Remove Friend</a>
 </p>
 
 
@@ -27,8 +25,3 @@
     <input placeholder="New Message" type="text" name="newMsg" [(ngModel)]="newMsg" required #newMessage="ngModel">
     <button class="btn" type="submit">Add</button>
 </form>
-<!--form id="message_form" role="form" #messageForm="ngForm">
-    <input id="message_form_input" type="text" placeholder="New Message" name="newMsg" [(ngModel)]="newMsg" #newMessage="ngModel">
-    <-- Todo: Clear when sent! >
-    <button class="btn" (click)="sendMessage(messageForm)">Send</button>
-</form-->

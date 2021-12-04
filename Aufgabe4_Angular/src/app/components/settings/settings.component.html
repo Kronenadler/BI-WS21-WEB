@@ -7,15 +7,15 @@
                 <p>
                     <label class="fixedlabel">First Name</label>
                     <input [(ngModel)]="profile.firstName" class="fixed" name="firstName"
-                     style="margin: 0 5;" placeholder="Your Name" type="text" value=""/>
+                        style="margin: 0 5;" placeholder="Your Name" type="text" value=""/>
                 </p>
                 <p>
                     <label class="fixedlabel">Last Name</label>
                     <input [(ngModel)]="profile.lastName" class="fixed" name="lastName"
-                    placeholder="Your Surname" type="text" /> 
+                        placeholder="Your Surname" type="text" />
                 </p>
                 <p>Coffee or Tea
-                    <select [(ngModel)]="profile.coffeeOrTea" name="coffeeOrTeaSelect">
+                    <select class="fixed" [(ngModel)]="profile.coffeeOrTea" name="coffeeOrTeaSelect">
                         <option [ngValue]="1" [selected]="profile.coffeeOrTea == '1'">
                         Neither Nor</option>
                         <option [ngValue]="2" [selected]="profile.coffeeOrTea == '2'">
@@ -28,7 +28,7 @@
         </fieldset>
         <fieldset style="padding: 0.7em; box-sizing: border-box;">
             <legend>Tell me Something about you:</legend>
-            <textarea name="description" #about="ngModel"
+            <textarea name="description" #about="ngModel" class="big"
                         [(ngModel)]="profile.description" row="5">
             </textarea>
         </fieldset>
@@ -36,13 +36,13 @@
             <legend>Präferenz</legend>
             <div class="beverageleft">
                 <div class="block">
-                    <input [(ngModel)]="profile.layout" type="radio" 
-                    id="oneline" name="displaymethod" name="oneline">
+                    <input Value="1" [checked]="profile.layout == '1'" type="radio" 
+                    id="oneline" name="displaymethod">
                     <label for="oneline"> Username and Message in one Line</label>
                 </div>
                 <div class="block">
-                    <input [(ngModel)]="profile.layout" type="radio" 
-                    id="sepline" name="displaymethod" name="sepline">
+                    <input Value="2" [checked]="profile.layout == '2'" type="radio" 
+                    id="sepline" name="displaymethod">
                     <label for="sepline"> Username and Message in seperate Lines</label>
                 </div>               
             </div>

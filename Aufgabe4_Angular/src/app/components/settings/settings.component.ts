@@ -11,19 +11,23 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class SettingsComponent implements OnInit {
 
-    public profile: Profile = new Profile('', '', '', '', '');
+    public profile: Profile;
 
     public constructor(public router: Router, private backendservice: BackendService) {
+        this.profile = new Profile('', '', '1', '', '1');
     }
 
     public ngOnInit(): void {
         this.backendservice.loadCurrentUser().then((user: any) => {
-            this.profile.firstName = user != null ? user.firstName : '';
-            this.profile.lastName = user != null ? user.lastName : '';
-            this.profile.coffeeOrTea = user != null ? user.coffeeOrTea : '';
-            this.profile.description = user != null ? user.description : '';
-            this.profile.layout = user != null ? user.layout : '';
+            if(user != null){
+                this.profile.firstName = user.firstName ? user.firstName : '';
+                this.profile.lastName = user.lastName ? user.lastName : '';
+                this.profile.coffeeOrTea = user.coffeeOrTea ? user.coffeeOrTea : '1';
+                this.profile.description = user.description ? user.description : '';
+                this.profile.layout = user.layout ? user.layout : '1';
+            }
         })
+        console.log(this.profile.coffeeOrTea);
     }
 
     public saveSettings(): void{

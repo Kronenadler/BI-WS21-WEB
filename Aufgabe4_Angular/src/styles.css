@@ -141,6 +141,10 @@ button.blue {
     background-color: blue;
 }
 
+button.red {
+    background-color: red;
+}
+
 button:hover {
     background-color: purple;
 }
@@ -262,7 +266,7 @@ a:active {
     float: right;
     box-sizing: border-box;
     border: 2px solid grey;
-    padding: 10;
+    padding: 10px;
 }
 
 
@@ -272,7 +276,7 @@ a:active {
     width: 30%;
     float: left;
     box-sizing: border-box;
-    padding: 0 15 0 0;
+    padding: 0px 15px 0px 0px;
     margin: auto;
 }
 

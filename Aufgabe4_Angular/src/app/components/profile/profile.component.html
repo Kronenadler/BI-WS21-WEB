@@ -1,23 +1,21 @@
 <div>
     <div>
-        <h2 [(ngModel)]="header" name="header"></h2>
+        <h1 id="Profile_title" class="title">Profil von {{this.profileUser.username}}</h1>
         <a  routerLink="/chat">
           &lt; Back To Chat
         </a> | 
-        <a class="dangerous" (click)="removeFriend()">
+        <a href="" class="dangerous" (click)="removeFriend()">
             Remove Friend
         </a>
     </div>
-    <div style="margin: 20 0 0 0;"> 
-        <img src="../../../../images/profile.png" class="left"> 
-        <div class="right">
-                <p [(ngModel)]="profile.description" name="description">
-                </p>
-    
-                <p>Coffee or Tea ?</p>
-                <p>      Tea</p>
-                <p>Name</p>
-                <p [(ngModel)]="profileUser.username" name="username"></p>
+    <div style="margin: 20 0 0 0;">
+        <img src="../../../assets/images/profile.png" class="left"> 
+        <div class="right"> 
+            <p>{{this.profile.description}} </p>
+            <p>Coffee or Tea ?</p>
+            <p>{{this.profile.coffeeOrTea}}</p>
+            <p>Name:</p>
+            <p>{{this.profile.firstName}}</p>
         </div>
     </div>
 </div>

@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/friends']);
             }
         })
-        //this.router.navigate(['/friends']);
     }
 
     public register(): void {

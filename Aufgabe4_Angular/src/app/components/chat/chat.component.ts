@@ -8,9 +8,9 @@ import { ContextService } from 'src/app/services/context.service';
 import { IntervalService } from 'src/app/services/interval.service';
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+    selector: 'app-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.css']
 })
 
 export class ChatComponent implements OnInit, AfterViewChecked {
@@ -22,7 +22,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public messagedUser: string;
 
     public constructor(private router: Router, public contextService: ContextService, public backendService: BackendService,
-            public intervalService: IntervalService) { 
+        public intervalService: IntervalService) {
         this.myScrollContainer = new ElementRef(null);
 
         this.messages = new Array();
@@ -30,9 +30,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         this.messagedUser = "NAME";
     }
 
-    public ngAfterViewChecked() {        
-        this.scrollToBottom();        
-    } 
+    public ngAfterViewChecked() {
+        this.scrollToBottom();
+    }
 
     /**
      * Setzt in der Nachrichtenliste die Scrollposition ("scrollTop") auf die DIV-Größe ("scrollHeight"). Dies bewirkt ein 
@@ -41,8 +41,8 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     private scrollToBottom(): void {
         try {
             this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-        } catch(err) { 
-        }                 
+        } catch (err) {
+        }
     }
 
     public ngOnInit(): void {
@@ -62,7 +62,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     public loadData(): void {
         this.backendService.listMessages(this.contextService.currentChatUsername).then((msgs: Array<Message>) => {
-            if(msgs.length > 0) {
+            if (msgs.length > 0) {
                 console.log("Loaded Messages!"); // Todo Remove
                 this.messages = msgs;
             }
@@ -70,11 +70,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     public sendMessage(form: NgForm): void {
-        if(this.newMsg === ""){
+        if (this.newMsg === "") {
             console.log("Didn't send message: was empty!");
         } else {
             this.backendService.sendMessage(this.contextService.currentChatUsername, this.newMsg).then((ok: boolean) => {
-                if(ok) {
+                if (ok) {
                     console.log("Message sent!");
                 } else {
                     console.log("Error sending message!");
@@ -90,20 +90,22 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     public removeFriend(): void {
-        /*
+        // Ask if friend should really be removed
+        var confirmRemove = confirm("Do you really want to remove " + this.contextService.currentChatUsername + " from your friendlist?");
 
-        TODO:
-        Asking to confirm removal via alert!
+        // Remove Friend
+        if (confirmRemove) {
+            console.log("Removing Friend " + this.contextService.currentChatUsername);
+            this.backendService.removeFriend(this.contextService.currentChatUsername).then((ok) => {
+                if (ok) {
+                    console.log("Removed Friend"); // Todo Remove ?
+                    this.router.navigate(['/friends']);
+                }
 
-        */
-        console.log("Removing Friend " + this.contextService.currentChatUsername);
-        this.backendService.removeFriend(this.contextService.currentChatUsername).then((ok) => {
-            if(ok) {
-                console.log("Removed Friend"); // Todo Remove ?
-                this.router.navigate(['/friends']);
-            }
-                
-        })
+            });
+        } else {
+            console.log("Removing friend aborted!");
+        }
     }
 
 }

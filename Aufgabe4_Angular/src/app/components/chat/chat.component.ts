@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public messages: Array<Message>;
     public newMsg: string;
     public messagedUser: string;
+    public seperateLines: boolean;
 
     public constructor(private router: Router, public contextService: ContextService, public backendService: BackendService,
         public intervalService: IntervalService) {
@@ -28,6 +29,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         this.messages = new Array();
         this.newMsg = "";
         this.messagedUser = "NAME";
+        this.seperateLines = false;
     }
 
     public ngAfterViewChecked() {
@@ -51,6 +53,18 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
         // Initially load data
         this.loadData();
+
+        // Initially load chat layout
+        // # '1' : In one line
+        // # '2' : In seperate lines
+        this.backendService.loadCurrentUser().then((user: any) => {
+            console.log("Chat Layout: " + user.layout); // Todo Remove
+            if(user.layout == '2'){
+                this.seperateLines = true;
+            } else {
+                this.seperateLines = false;
+            }
+        });
 
         // Load data every x seconds
         this.intervalService.setInterval("reloadMessages", () => this.loadData());

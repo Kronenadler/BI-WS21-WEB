@@ -15,7 +15,7 @@
         <label>There are currently no text messages</label>
     </div>
     <div *ngFor="let message of messages">
-        <label><b>{{message.from}}</b>: {{message.msg}}</label>
+        <label><b>{{message.from}}</b>:<br *ngIf="seperateLines" /> {{message.msg}}</label>
         <label class="timestamp">{{formatTime(message.time)}}</label>
     </div>
 </div>

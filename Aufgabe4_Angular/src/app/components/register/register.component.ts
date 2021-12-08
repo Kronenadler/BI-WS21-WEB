@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     public password1Ok: boolean = false;
 
     public constructor(private router: Router, private contextService: ContextService, private backendService: BackendService) {
-      //  this.backendService.register("sepp", "12345678");
+        this.backendService.register("sepp", "12345678");
      //   console.log("sepp created");
     }
 
@@ -36,15 +36,23 @@ export class RegisterComponent implements OnInit {
     public checkUsername(): void {
         console.log("checked");
         if (this.username != null && this.username.length > 2) {
-            this.backendService.userExists(this.username)       //Then -> User existiert; Catch -> User noch nicht da
+            this.backendService.userExists(this.username)     
                 .then((result) => {
                     if (result) {
                         this.usernameOk = false;
                         console.log("User exisitiert");
+                        var errortext = document.getElementById('usernameErr');
+                        if (errortext != null) {
+                            errortext.className = "errormsg";
+                        }
                     }
                     else {
                         this.usernameOk = true;
                         console.log("User exisitiert nicht");
+                        var errortext = document.getElementById('usernameErr');
+                        if (errortext != null) {
+                            errortext.className = "invis";
+                        }
                     }
                 })}
         else {
@@ -58,10 +66,18 @@ export class RegisterComponent implements OnInit {
             if (this.password1 != null || this.password1 != '') {
                 this.password1Ok = true;
                 console.log("password1Ok: " + this.password1Ok)
+                var errortext = document.getElementById('pw1Err');
+                if (errortext != null) {
+                    errortext.className = "invis";
+                }
             }
         }
         else {
             this.password1Ok = false;
+            var errortext = document.getElementById('pw1Err');
+            if (errortext != null) {
+                errortext.className = "errormsg";
+            }
         }
 
     }
@@ -69,9 +85,17 @@ export class RegisterComponent implements OnInit {
 
         if (this.password1 == this.password2 && this.password1Ok) {
             this.passwordOk = true;
+            var errortext = document.getElementById('pw2Err');
+            if (errortext != null) {
+                errortext.className = "invis";
+            }
         }
         else {
             this.passwordOk = false;
+            var errortext = document.getElementById('pw2Err');
+            if (errortext != null) {
+                errortext.className = "errormsg";
+            }
         }
         console.log("after pw2: " + this.passwordOk);
     }

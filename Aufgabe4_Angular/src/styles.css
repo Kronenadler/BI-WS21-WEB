@@ -36,12 +36,12 @@
         text-align: center;
         float: center;
     }
-    #password,
-    #username {
+    #password, #password2,
+    #username{
         text-align: center;
         width: 0%;
     }
-    #password {
+    #password, #password2 {
         padding-right: 3%;
     }
     #button {
@@ -100,7 +100,7 @@ legend.login {
 
 #username {
     position: relative;
-    margin-left: 95px;
+    margin-left: 1%;
     text-align: center;
     box-sizing: border-box;
     height: auto;
@@ -112,13 +112,13 @@ legend.login {
     min-width: 50%;
 }
 
-#password {
-    margin-left: 100px;
+#password, #password2 {
+    margin-left: 1%;
     text-align: center;
     box-sizing: border-box;
     height: auto;
     margin-top: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 0%;
     margin-right: 0%;
     float: center;
     min-width: 50%;

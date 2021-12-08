@@ -1,0 +1,133 @@
+/*
+ * Stylesheet for register.html & chat.html
+ *      > has to be merged with the other stylesheets
+ */
+
+ @media only screen and (max-width: 900px) {
+
+  .box > p.max-small {
+      text-align: center;
+  }
+
+  .box > p.max-small input {
+      width: 94%;
+  }
+
+  .btn {
+      width: 98%;
+      margin-left: 1%;
+      margin-right: 1%;
+  }
+}
+body {
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+  width: 900px;
+  margin: auto;
+  text-align: center;
+}
+img {
+  margin: 30px auto;
+  width: 25%;
+  border-radius: 50%;
+}
+
+.title {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+
+}
+.box {
+  background-color: white;
+  border-style: dotted;
+  border-color: #bbbbbb;
+  margin: 1% 1%;
+}
+button.btn{
+  margin-left: 5%;
+  background-color: #aaaaaa;
+  height: 40px;
+  margin-top: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-top:0%;
+  padding-top:0%;
+  width:15%;
+ }
+
+.grey {
+  margin-left: 5%;
+  background-color: #aaaaaa;
+  height: 40px;
+  margin-top: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-top:0%;
+  padding-top:0%;
+  width:15%;
+}
+.blue {
+  margin-left: 5%;
+  background-color: #aaaaaa;
+  height: 40px;
+  margin-top: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left:1%;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-top:0%;
+  padding-top:0%;
+  width:20%;
+}
+.box label {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.box input {
+  width: 50%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.box > p {
+  text-align: right;
+}
+
+.legend_login {
+  font-family: sans-serif;
+}
+
+input:focus {
+  border-bottom-style:dashed 1em solid red;
+  background-color: #AAAAAA;
+}
+.bottom_btns {
+  text-align:center;
+  margin-bottom:1%;
+}
+.grey:hover, .blue:hover {
+  background-color:purple;
+}
+#pw1Err, #pw2Err, #usernameErr {
+  float: none;
+  color:Red;
+  text-align: center;
+  margin-top:0%;
+  margin-bottom:0%;
+}
+.invis {
+  display: none;
+}
+.errormsg {
+  display:block;
+}

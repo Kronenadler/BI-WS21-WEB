@@ -25,7 +25,9 @@ img {
     width: 25%;
     border-radius: 50%;
 }
-
+body {
+    text-align: center;
+}
 .title {
     text-align: center;
 }
@@ -48,14 +50,13 @@ img {
 .legend_login {
     font-family: sans-serif;
 }
-.form-control.success input {
-	border-color: #2ecc71;
-    background-color: #2ecc71;
+.errortext {
+    display: none;
+    background-color:red;
 }
-
-.form-control.error input {
-	border-color: #e74c3c;
-    border-color: #e74c3c;
+.errortextShow {
+	display: block;
+    color: red;
 }
 input:focus {
     border-bottom-style:dashed 1em solid red;

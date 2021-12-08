@@ -59,13 +59,10 @@ export class ProfileComponent implements OnInit {
         var wantsremove = confirm('Wollen sie '+ this.context.currentChatUsername + ' wirklich als Freund entfernen?');
 
         if(wantsremove == true){
-            this.backendservice.removeFriend(this.context.currentChatUsername)
-            .then((result: boolean) => {
-                if (result == true) {
+            this.backendservice.removeFriend(this.context.currentChatUsername).then((ok) => {
+                if (ok) {
+                    console.log("Removed Friend"); // Todo Remove ?
                     this.router.navigate(['/friends']);
-                }
-                else{
-                    console.log("Fehler beim Speichern des Profils");
                 }
             })
         }

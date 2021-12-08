@@ -36,13 +36,13 @@
             <legend>Präferenz</legend>
             <div class="beverageleft">
                 <div class="block">
-                    <input Value="1" [checked]="profile.layout == '1'" type="radio" 
-                    id="oneline" name="displaymethod">
+                    <input [value]="1" [(ngModel)]="profile.layout" type="radio" 
+                    id="oneline" name="displaymethod" [checked]="profile.layout == '1'">
                     <label for="oneline"> Username and Message in one Line</label>
                 </div>
                 <div class="block">
-                    <input Value="2" [checked]="profile.layout == '2'" type="radio" 
-                    id="sepline" name="displaymethod">
+                    <input [value]="2" [(ngModel)]="profile.layout" type="radio" 
+                    id="sepline" name="displaymethod" [checked]="profile.layout == '2'">
                     <label for="sepline"> Username and Message in seperate Lines</label>
                 </div>               
             </div>

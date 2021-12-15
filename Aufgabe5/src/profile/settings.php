@@ -1,3 +1,6 @@
+<?php 
+    require("./start.php");
+?>
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="../../styles/styles.css">

@@ -11,7 +11,7 @@ if (!isset($_SESSION["loginData"])) {
      $error = "Somethign went wront";
   } 
   else {
-   // $error = "everythigns fine";
+     $error = "everythigns fine";
   }
 
 

@@ -1,3 +1,12 @@
+<?php 
+require("start.php");
+session_unset;
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <header>
     <link rel="stylesheet" href="../styles/styles.css">

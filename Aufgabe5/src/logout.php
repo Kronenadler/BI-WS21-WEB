@@ -1,8 +1,6 @@
 <?php 
 require("start.php");
-session_unset;
-
-
+session_unset();
 ?>
 
 
@@ -22,6 +20,6 @@ session_unset;
     <h1>Logged out...</h1>
     <h3>See u!</h3>
 
-    <a href="./login.html" id="link">Login again!</a>
+    <a href="./login.php" id="link">Login again!</a>
 </div>
 </body>

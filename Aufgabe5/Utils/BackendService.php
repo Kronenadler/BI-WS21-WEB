@@ -71,18 +71,48 @@ class BackendService
     }
     public function loadFriends()
     {
-    }
+        {   try {
+            $data = $_SESSION["chat_token"];
+            $result = HttpClient::get($this->base . '/' . $this->id . "/friend", $data);
+            var_dump($result);
+            return $result;
+        } catch(\Exception $e) {
+            echo "Error...";
+        }
+    }}
     public function friendRequest($friend)
     {
+        try {
+           return HttpClient::post($this->base . '/' . $this->id . "/friend", $friend, $_SESSION["chat_token"]);
+        } catch(\Exception $e) {
+            echo "Err...";
+        }
     }
     public function friendAccept($friend)
-    {
+    {try {
+        return HttpClient::put($this->base . '/' . $this->id . "/friend" . "/" . $friend,
+            array("status" => "accepted"),  $_SESSION["chat_token"]);
+        
+    } catch(\Exception $e) {
+        echo "Error...";
+    }
     }
     public function friendDismiss($friend)
-    {
+    {try {
+        return HttpClient::put($this->base . '/' . $this->id . "/friend" . "/" . $friend,
+            array("status" => "dismissed"),  $_SESSION["chat_token"]);
+        
+    } catch(\Exception $e) {
+        echo "Error...";
+    }
     }
     public function friendRemove($friend)
-    {
+    {try {
+        Utils\HttpClient::delete($this->base . '/' . $this->id . "/friend" . "/" . $friend, $_SESSION["chat_token"]);
+        echo "Removed...";
+    } catch(\Exception $e) {
+        echo "Error...";
+    }
     }
     public function userExists($username)
     {

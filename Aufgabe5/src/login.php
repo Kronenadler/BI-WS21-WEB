@@ -1,7 +1,7 @@
 <?php 
 require("start.php");
 if(isset($_SESSION["user"])) {
-    header("Location: friends.html");
+    header("Location: friends.php");
 }
 
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
@@ -18,7 +18,7 @@ $password = $_POST['pwd'];
 
 if($service->login($username, $password)) {
   $_SESSION["user"] = $username;
-  header("Location: friends.html");
+  header("Location: friends.php");
   unset($_SESSION["error"]);
 }
 else {
@@ -75,10 +75,7 @@ else {
         </fieldset>
         <div class="row">
             <div class="col-12">
-                <a href="./register.html">
-                    <button id="button" class="grey">Register</button>
-                </a>
-
+                
 
 
                 <button id="button" class="blue" type="submit" value="save">Login</button>
@@ -86,6 +83,9 @@ else {
             </div>
         </div>
     </form>
+    <a href="./register.php">
+                    <button id="button" type="none" class="grey">Register</button>
+                </a>
 
 
 

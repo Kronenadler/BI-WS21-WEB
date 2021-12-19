@@ -67,13 +67,13 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <hr class="friendslist">
     <ul class="friends">
         <?php 
-        
-        if(count($friendlist) != 0) {
-        foreach ($friendlist as $fren) {
-          //  echo gettype($friend);
-           // $fren = new Model\Friend($friend); //create every friend
-           // echo gettype($fren);
-            if($fren->get_status() == "accepted"){    //check if friend is accepted ?>
+                                            //$friendlist = array aus objects
+        if(count($friendlist) != 0) {       //Hat der Array einen Inhalt?
+        foreach ($friendlist as $friend) {  
+            $friendC = new Model\Friend($friend);
+            echo $friendC->get_status();
+            echo "hi";
+            if($friendC->get_status() === "accepted"){    //check if friend is accepted ?>
                   <li id="friendslist"><?= $fren->get_username() ?> 
                   <button class="msgcount" type="submit" name="remove"
                     value=<?php $value ?>>Remove Friend</button>

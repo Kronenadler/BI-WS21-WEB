@@ -69,7 +69,7 @@ if (isset($_POST["username"])) {
 
             <p class="max-small">
                 <label for="Username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Username" value="<?php echo $_POST["username"]?>">
+                <input type="text" id="username" name="username" placeholder="Username" value="<?php if(isset($_POST["username"])) { echo $_POST["username"];}?>">
                 <?php
                     if($bool_name_empty){
                         echo "<br><label style='color:red'>The username must have at least 3 characters!</label>";

@@ -56,6 +56,7 @@ class BackendService
                 return false;
             } else {
                 $_SESSION["chat_token"] = $response->token;
+                $_SESSION["user"] = $username;
                 return true;
             }
 

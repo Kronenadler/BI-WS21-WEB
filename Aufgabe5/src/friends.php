@@ -38,7 +38,7 @@ ggf. zu den Nutzerprofil-Einstellungen.->
     </div>
     <a href="./logout.php" id="link"> &lt; Log out</a>
     <span>|</span>
-    <a href="./profile/settings.html" id="link">Settings</a>
+    <a href="./settings.php" id="link">Settings</a>
     <hr class="friendslist">
     <ul class="friends">
         <?php 

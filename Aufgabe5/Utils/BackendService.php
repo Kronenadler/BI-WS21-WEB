@@ -68,16 +68,16 @@ class BackendService
     public function loadUser($username)
     {
         try {
-            $data["username"] = "Tom";
+            $data["username"] = $username;
             
             $response = HttpClient::get($this->base . '/' . $this->id . "/user", $data);
             echo $response;
-            return User::fromJson($username);
+            return User::fromJson($response);
         } catch (\Exception $e) {
             error_log($e);
         }
     }
-    
+
     public function saveUser($username)
     {
     }

@@ -48,6 +48,9 @@ class Friend implements JsonSerializable
 
     public function get_status()
     {
+      
+        echo $this->status;
+        
         return $this->status;
     }
 

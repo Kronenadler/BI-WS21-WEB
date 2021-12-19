@@ -3,31 +3,23 @@ if(!isset($_SESSION["user"])) {
     header("Location: login.php");
 }
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+$friendlist = $service->loadFriends();
 
 if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend")
-{
-    if(isset($_POST["reqFriend"]))
-    {
-        $friend1 = new Model\Friend($_POST["reqFriend"]);
-        $service->friendRequest($friend1);
-        $friend1->dismiss_friend();
-    }
-    else { $errorAdd = "Fehler beim hinzufügen";}
+{  
+        $service->friendRequest($_POST["reqFriend"]);   
 }
 else { $errorAdd = "Fehler beim hinzufügen";}
 
-
+if(isset($_POST["remove"]) ){
+    $service->friendRemove($_POST["remove"]);
+}
 if(isset($_POST["dismiss"])){
     $service->friendDismiss($_POST["dismiss"]);
 }
-if(isset($_POST["remove"])){
-    $service->friendAccept($_POST["remove"]);
-}
-if(isset($_POST["accepted"])){
-    $service->friendAccept($_POST["accepted"]);
-}
-$friendlist = $service->loadFriends();
-//array_push($friendlist, "Hans", "Peter");
+ if(isset($_POST["accept"])){
+    $service->friendAccept($_POST["accept"]);
+ }
 
 
 ?>
@@ -70,18 +62,18 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                                             //$friendlist = array aus objects
         if(count($friendlist) != 0) {       //Hat der Array einen Inhalt?
         foreach ($friendlist as $friend) {  
-            $friendC = new Model\Friend($friend);
-            echo $friendC->get_status();
-            echo "hi";
-            if($friendC->get_status() === "accepted"){    //check if friend is accepted ?>
-                  <li id="friendslist"><?= $fren->get_username() ?> 
-                  <button class="msgcount" type="submit" name="remove"
-                    value=<?php $value ?>>Remove Friend</button>
-                  <button class="msgcount">3</button>
-            <?php }
-            }
+            if($friend->status == "accepted"){
+          ?>    <form method="post">
+                    <li id="friendslist"><?= $friend->username ?>    
+                    <button class="buttonsphp" type="submit" name="remove"
+                    value=<?= $friend->username ?>>Remove Friend</button>
+                    <button class="msgcount">3</button>
+            </form>
+            <?php 
+            }}
         }
-           else {?>
+           else {
+               ?>
          <li id="friendslist"><?= "You got no friends" ?>
          <?php }; ?>
     </ul>
@@ -92,21 +84,23 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <form action="friends.php" method="post">
         <ol>
             <?php 
-        if(count($friendlist) != 0) {
-            foreach ($friendlist as $value) {
-                $friend = new Model\Friend($value);
-                if($friend->get_status() == "requested")
+       // if(count($friendlist) != 0) {
+            foreach ($friendlist as $friend) {
+                if($friend->status == "requested")
                 {?>
-                    <li id="friendslist"><?= $value ?>
-                    <button class="msgcount" type="submit" name="accept" value=<?php $value ?>>Accept Friend</button>
-                    <button class="msgcount" type="submit" name="dismiss" value=<?php $value ?>>Dismiss Friend</button>
+                    <li id="friendslist"><?= $friend->username ?>
+                    <button class="buttonsphp" type="submit" name="accept" value=<?= $friend->username ?>>Accept Friend</button>
+   
+                    <button class="buttonsphp" type="submit" name="dismiss" value=<?= $friend->username ?>>Dismiss Friend</button>
+                   
                 <?php }
             }
-        }
-            else {?>
+        //}
+          //  else {?>
                 
-            <?php }; ?>
+            <?php //}; ?>
         </ol>
+        
     </form>
     <form method="post">
         <hr class="friendslist">

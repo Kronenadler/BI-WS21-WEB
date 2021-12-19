@@ -160,6 +160,15 @@ margin-bottom: 15px;
 padding: 10px 10px 5px 10px;
 
 }   
+.buttonsphp {
+  float:right;
+  text-align:right;
+  background-color:blue;
+  color:white;
+  border-style:none;
+  width: 5%;
+  height: 2%;
+}
 .msgcount {
   float:right;
   text-align:right;

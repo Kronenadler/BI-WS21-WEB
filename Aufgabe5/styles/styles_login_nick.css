@@ -3,16 +3,13 @@
  *      > has to be merged with the other stylesheets
  */
 
- @media only screen and (max-width: 900px) {
-
-    .box > p.max-small {
+@media only screen and (max-width: 900px) {
+    .box>p.max-small {
         text-align: center;
     }
-
-    .box > p.max-small input {
+    .box>p.max-small input {
         width: 94%;
     }
-
     .btn {
         width: 98%;
         margin-left: 1%;
@@ -41,23 +38,25 @@ img {
     padding-right: 1%;
 }
 
-.box > p {
+.box>p {
     text-align: right;
 }
 
 .legend_login {
     font-family: sans-serif;
 }
+
 .form-control.success input {
-	border-color: #2ecc71;
+    border-color: #2ecc71;
     background-color: #2ecc71;
 }
 
 .form-control.error input {
-	border-color: #e74c3c;
+    border-color: #e74c3c;
     border-color: #e74c3c;
 }
+
 input:focus {
-    border-bottom-style:dashed 1em solid red;
+    border-bottom-style: dashed 1em solid red;
     background-color: #AAAAAA;
 }

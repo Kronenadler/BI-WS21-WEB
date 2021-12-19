@@ -128,6 +128,21 @@ class BackendService
     }
     public function userExists($username)
     {
+        try {
+
+            $response = HttpClient::get($this->base . '/' . $this->id . '/user/' . $username);
+
+            if ($response == false) {
+                // User not found
+                return false;
+            } else {
+                // User found
+                return true;
+            }
+        } catch (\Exception $e) {
+            error_log($e);
+        }
+        return false;
     }
     public function getUnread()
     {

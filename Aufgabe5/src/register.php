@@ -3,6 +3,11 @@
 require("./start.php");
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 
+$bool_name_empty = false;
+$bool_name_exists = false;
+$bool_pw_empty = false;
+$bool_pw_different = false;
+
 if (isset($_POST["username"])) {
 
     // Checks if password is ok
@@ -24,6 +29,8 @@ if (isset($_POST["username"])) {
         $response = $service->register($_POST["username"], $_POST["password"]);
         if ($response == true) {
             header("Location: friends.php");
+        } else {
+            $bool_name_exists = true;
         }
     }
 }
@@ -65,10 +72,10 @@ if (isset($_POST["username"])) {
                 <input type="text" id="username" name="username" placeholder="Username" value="<?php echo $_POST["username"]?>">
                 <?php
                     if($bool_name_empty){
-                        echo "<label style='color:red'>The username must have at least 3 characters!</label>";
+                        echo "<br><label style='color:red'>The username must have at least 3 characters!</label>";
                     }
                     if($bool_name_exists){
-                        echo "<label style='color:red'>This username already exists!</label>";
+                        echo "<br><label style='color:red'>This username already exists!</label>";
                     }
                 ?>
             </p>
@@ -77,7 +84,7 @@ if (isset($_POST["username"])) {
                 <input type="password" id="password" name="password" placeholder="Password">
                 <?php
                     if($bool_pw_empty){
-                        echo "<label style='color:red'>The password must have at least 8 characters!</label>";
+                        echo "<br><label style='color:red'>The password must have at least 8 characters!</label>";
                     }
                 ?>
             </p>
@@ -86,7 +93,7 @@ if (isset($_POST["username"])) {
                 <input type="password" id="password2" name="password2" placeholder="Repeat Password">
                 <?php
                     if($bool_pw_different){
-                        echo "<label style='color:red'>Entered passwords don't match!</label>";
+                        echo "<br><label style='color:red'>Entered passwords don't match!</label>";
                     }
                 ?>
             </p>

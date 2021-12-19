@@ -1,5 +1,19 @@
 <?php 
     require("./start.php");
+    if(!isset($_SESSION["user"])) {
+        header("Location: login.php");
+    }
+    $username = $_SESSION["user"];
+    echo $username;
+    $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+    $user = $service->loadUser("Test123");
+    echo $user;
+    if($username != null){
+        $service->loadUser($username);
+    }
+    else{
+        //header("Location: login.php");
+    }
 ?>
 <!DOCTYPE html>
 <head>

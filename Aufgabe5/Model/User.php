@@ -7,6 +7,11 @@ use JsonSerializable;
 class User implements JsonSerializable
 {
     private $username;
+    private $firstname;
+    private $lastname;
+    private $coffeeOrTea;
+    private $comment;
+    private $layout;
 
     /**
      * Constructor creating the User Object
@@ -19,7 +24,6 @@ class User implements JsonSerializable
     }
 
 
-
     //--------------------
     // Getter
     //--------------------
@@ -29,7 +33,60 @@ class User implements JsonSerializable
         return $this->username;
     }
 
+    public function get_firstname(): string
+    {
+        return $this->firstname;
+    }
 
+    public function get_lastname(): string
+    {
+        return $this->lastname;
+    }
+
+    public function get_coffeeOrTea(): string
+    {
+        return $this->coffeeOrTea;
+    }
+
+    public function get_comment(): string
+    {
+        return $this->comment;
+    }
+
+    public function get_layout(): string
+    {
+        return $this->layout;
+    }
+
+
+
+    //--------------------
+    // Setter
+    //--------------------
+    public function set_firstname($firstname): void
+    {
+        $this->firstname = $firstname;
+    }
+
+    public function set_lastname($lastname): void
+    {
+        $this->lastname = $lastname;
+    }
+
+    public function set_coffeeOrTea($coffeeOrTea): void
+    {
+        $this->coffeeOrTea = $coffeeOrTea;
+    }
+
+    public function set_comment($comment): void
+    {
+        $this->comment = $comment;
+    }
+
+    public function set_layout($layout): void
+    {
+        $this->layout = $layout;
+    }
     
     //--------------------
     // Json Converting

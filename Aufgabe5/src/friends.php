@@ -8,18 +8,23 @@ $friendlist = $service->loadFriends();
 if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend")
 {  
         $service->friendRequest($_POST["reqFriend"]);   
+        header("Location: friends.php");
+
 }
 else { $errorAdd = "Fehler beim hinzufügen";}
 
 if(isset($_POST["remove"]) ){
     $service->friendRemove($_POST["remove"]);
-}
+    header("Location: friends.php");}
 if(isset($_POST["dismiss"])){
     $service->friendDismiss($_POST["dismiss"]);
-}
+    header("Location: friends.php");}
+
  if(isset($_POST["accept"])){
     $service->friendAccept($_POST["accept"]);
- }
+    header("Location: friends.php");}
+
+ 
 
 
 ?>

@@ -85,7 +85,7 @@ class BackendService
         try {
            return HttpClient::post($this->base . '/' . $this->id . "/friend", $friend, $_SESSION["chat_token"]);
         } catch(\Exception $e) {
-            echo "Err...";
+            echo "Error...";
         }
     }
     public function friendAccept($friend)

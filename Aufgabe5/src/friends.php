@@ -4,8 +4,27 @@ if(!isset($_SESSION["user"])) {
 }
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 
-$friendlist = $service->loadFriends();
+if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend")
+{
+    if(isset($_POST["reqFriend"]))
+    {
+        $friend1 = new Model\Friend($_POST["reqFriend"]);
+        $service->friendRequest($friend1);
+    }
+    else { $errorAdd = "Fehler beim hinzufügen";}
+}
+else { $errorAdd = "Fehler beim hinzufügen";}
 
+if(isset($_POST["accepted"])){
+    $service->friendAccept($_POST["accepted"]);
+}
+if(isset($_POST["dismiss"])){
+    $service->friendDismiss($_POST["dismiss"]);
+}
+if(isset($_POST["remove"])){
+    $service->friendAccept($_POST["remove"]);
+}
+$friendlist = $service->loadFriends();
 array_push($friendlist, "Hans", "Peter");
 
 
@@ -26,12 +45,16 @@ ggf. zu den Nutzerprofil-Einstellungen.->
         Friendslist
     </title>
 </header>
-
+<script>
+window.chatToken = "<?= $_SESSION['chat_token'] ?>";
+window.chatCollectionId = "<?= $CHAT_SERVER_ID ?>";
+window.chatServer = "<?= $CHAT_SERVER_URL ?>";
+</script>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="friends" >
+<body class="friends">
     <h1>Friends</h1>
     <div><?php $help1 =$_SESSION["user"];
         echo $help1; ?>
@@ -42,31 +65,54 @@ ggf. zu den Nutzerprofil-Einstellungen.->
     <hr class="friendslist">
     <ul class="friends">
         <?php 
-        if(count($friendlist) != 0) {
+        if(empty($friendlist)) {
         foreach ($friendlist as $value) {
-            $friend = new Model\Friend($value);
-            if($friend->get_status() == "accepted"){?>
-        <li id="friendslist"><?= $value ?><button class="msgcount">3</button>
-            <?php }}}
-            else {?>
-        <li id="friendslist"><?= "You got no friends" ?><?php }; ?>
-
+            $friend = new Model\Friend($value); //create every friend
+            if($friend->get_status() == "accepted"){    //check if friend is accepted ?>
+                  <li id="friendslist"><?= $value ?> 
+                  <button class="msgcount" type="submit" name="remove"
+                    value=<?php $value ?>>Remove Friend</button>
+                  <button class="msgcount">3</button>
+            <?php }
+            }
+        }
+           else {?>
+         <li id="friendslist"><?= "You got no friends" ?>
+         <?php }; ?>
     </ul>
 
 
     <hr class="friendslist">
     <h2>New Requests:</h2>
-    <ol>
-        <li class="friendrequest"><a href="#FRbyTrack">Friend Request from Track</a></li>
-    </ol>
-    <hr class="friendslist">
-    <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="Username" value="" size="20"
-        maxlength="50;" list="names" onkeyup="keyup(this)" />
-    <datalist id="names">
-        <option value="Test"></option>
-    </datalist>
-    <a href="#add">
+    <form action="friends.php" method="post">
+        <ol>
+            <?php 
+        if(count($friendlist) != 0) {
+            foreach ($friendlist as $value) {
+                $friend = new Model\Friend($value);
+                if($friend->get_status() == "requested")
+                {?>
+                    <li id="friendslist"><?= $value ?>
+                    <button class="msgcount" type="submit" name="accept" value=<?php $value ?>>Accept Friend</button>
+                    <button class="msgcount" type="submit" name="dismiss" value=<?php $value ?>>Dismiss Friend</button>
+                <?php }
+            }
+        }
+            else {?>
+                
+            <?php }; ?>
+        </ol>
+    </form>
+    <form method="post">
+        <hr class="friendslist">
+        <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="reqFriend" value="" size="20"
+            maxlength="50;" list="names" onkeyup="keyup(this)" />
+        <datalist id="names">
+            <option value="Test"></option>
+        </datalist>
         <!--id="link"-->
-        <button class="sendFR">Add</button>
-    </a>
+        <button class="sendFR" name="action" type="submit" value="add-friend">Add</button>
+    </form>
+
+
 </body>

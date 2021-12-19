@@ -10,22 +10,24 @@ if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend")
     {
         $friend1 = new Model\Friend($_POST["reqFriend"]);
         $service->friendRequest($friend1);
+        $friend1->dismiss_friend();
     }
     else { $errorAdd = "Fehler beim hinzufügen";}
 }
 else { $errorAdd = "Fehler beim hinzufügen";}
 
-if(isset($_POST["accepted"])){
-    $service->friendAccept($_POST["accepted"]);
-}
+
 if(isset($_POST["dismiss"])){
     $service->friendDismiss($_POST["dismiss"]);
 }
 if(isset($_POST["remove"])){
     $service->friendAccept($_POST["remove"]);
 }
+if(isset($_POST["accepted"])){
+    $service->friendAccept($_POST["accepted"]);
+}
 $friendlist = $service->loadFriends();
-array_push($friendlist, "Hans", "Peter");
+//array_push($friendlist, "Hans", "Peter");
 
 
 ?>
@@ -65,11 +67,14 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <hr class="friendslist">
     <ul class="friends">
         <?php 
-        if(empty($friendlist)) {
-        foreach ($friendlist as $value) {
-            $friend = new Model\Friend($value); //create every friend
-            if($friend->get_status() == "accepted"){    //check if friend is accepted ?>
-                  <li id="friendslist"><?= $value ?> 
+        
+        if(count($friendlist) != 0) {
+        foreach ($friendlist as $fren) {
+          //  echo gettype($friend);
+           // $fren = new Model\Friend($friend); //create every friend
+           // echo gettype($fren);
+            if($fren->get_status() == "accepted"){    //check if friend is accepted ?>
+                  <li id="friendslist"><?= $fren->get_username() ?> 
                   <button class="msgcount" type="submit" name="remove"
                     value=<?php $value ?>>Remove Friend</button>
                   <button class="msgcount">3</button>

@@ -19,7 +19,7 @@ $password = $_POST['pwd'];
 if($service->login($username, $password)) {
   $_SESSION["user"] = $username;
   header("Location: friends.php");
-  unset($_SESSION["error"]);
+  $_SESSION["error"] = "";
 }
 else {
   $passwordOk = true;

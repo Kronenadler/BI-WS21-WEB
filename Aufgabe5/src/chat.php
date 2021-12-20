@@ -8,6 +8,12 @@ if(!isset($_SESSION["user"]) || !isset($_SESSION["chat_token"])){
     header("Location: login.php");
 }
 
+// Check if friend should be removed
+if(isset($_GET["removeFriend"])){
+    $service->friendRemove($_GET["removeFriend"]);
+    header("Location: friends.php");
+}
+
 // Check if friend to chat with is set
 if(!isset($_GET["chatWith"])){
     header("Location: friends.php");
@@ -29,22 +35,12 @@ if(!isset($_GET["chatWith"])){
     
     <!-- User Token Stuff -->
     <script>
-        // You are Tom
-        /*const chat = {
-            "url": "https://online-lectures-cs.thi.de/chat",
-            "collection_id": "8cc791e3-93c6-422a-a3bd-461163934c10",
-            "currentUser": "Tom",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM2ODg0NjAxfQ.R7I9YHGJ-F03QFzHEt0B4lygZZ6p2XDRePR49easuo4",
-            "messagedUser": "Jerry"
-        };*/
-
-        // You are Jerry
         const chat = {
-            "url": "https://online-lectures-cs.thi.de/chat",
-            "collection_id": "8cc791e3-93c6-422a-a3bd-461163934c10",
-            "currentUser": "Jerry",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmVycnkiLCJpYXQiOjE2MzY4ODQ2MDF9.1VhzQYx7loCKABfmvoWg_N9ww_oHw83xG8lFZs1m0IU",
-            "messagedUser": "Tom"
+            "url": "<?php echo CHAT_SERVER_URL ?>",
+            "collection_id": "<?php echo CHAT_SERVER_ID ?>",
+            "currentUser": "<?php echo $_SESSION["user"] ?>",
+            "token": "<?php echo $_SESSION["chat_token"] ?>",
+            "messagedUser": "<?php echo $friend ?>"
         };
     </script>
 
@@ -58,16 +54,16 @@ if(!isset($_GET["chatWith"])){
 <!--
     Body
 -->
-
 <body class="full-screen">
-    <h1 id="chat_title" class="title">Chat with NAME</h1>
+    <h1 id="chat_title" class="title">Chat with <?php echo $friend ?></h1>
 
     <!-- Menu-->
     <p id="nav_header">
         <a href="./friends.php">&lt; Back</a> |
         <a href="./profile.php">Profile</a> |
         <!-- ToDo: Remove Friend Functionality -->
-        <a href="./friends.php">Remove Friend</a>
+        <a href="./chat.php?removeFriend=<?php echo $friend ?>">Remove Friend</a>
+        
     </p>
 
 

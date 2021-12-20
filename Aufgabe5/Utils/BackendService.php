@@ -133,7 +133,7 @@ class BackendService
     {
         try {
 
-            $response = HttpClient::get($this->base . '/' . $this->id . '/user/' . $username);
+            $response = HttpClient::get($this->base . '/' . $this->id . "/user" . "/" . $username);
 
             if ($response == false) {
                 // User not found

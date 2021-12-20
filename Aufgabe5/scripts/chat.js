@@ -9,11 +9,10 @@ function main() {
     // Initialize vars
 
     // Initialize labels
-    document.getElementById("chat_title").innerText = "Chat with " + chat.messagedUser;
     getMessages();
 
     // Update message area every 2 seconds
-    window.setInterval(function () {
+    window.setInterval(function() {
         getMessages();
     }, 2000);
 }
@@ -26,7 +25,7 @@ function main() {
 function getMessages() {
     // Create HttpRequest and its reaction to it
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
             // if new messages came in, update
@@ -34,13 +33,16 @@ function getMessages() {
                 last_msgs = xmlhttp.responseText;
 
                 // Parse JSON to an object and display in the message area
-                displayMessages(JSON.parse(xmlhttp.responseText));
+                var data = JSON.parse(xmlhttp.responseText);
+                if (data.length > 0) {
+                    displayMessages(data);
+                }
             }
         }
     };
 
     // Send GET request to server with the required token etc.
-    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/" + chat.collection_id + "/message/" + chat.messagedUser, true);
+    xmlhttp.open("GET", chat.url + '/' + chat.collection_id + "/message/" + chat.messagedUser, true);
     xmlhttp.setRequestHeader('Authorization', 'Bearer ' + chat.token);
     xmlhttp.send();
 }
@@ -90,7 +92,7 @@ function sendMessage() {
 
     // Create POST message
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 204) {
 
             //console.log("Message sent!"); //Todo
@@ -99,9 +101,8 @@ function sendMessage() {
     };
 
     // Send POST request to server with the required token etc.
-    xmlhttp.open("POST", "https://online-lectures-cs.thi.de/chat/" + chat.collection_id + "/message", true);
+    xmlhttp.open("POST", chat.url + '/' + chat.collection_id + "/message", true);
     xmlhttp.setRequestHeader('Content-type', 'application/json');
     xmlhttp.setRequestHeader('Authorization', 'Bearer ' + chat.token);
     xmlhttp.send(JSON.stringify(msg)); // Send msg serialized as JSON
 }
-

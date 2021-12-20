@@ -21,6 +21,8 @@ class User implements JsonSerializable
     function __construct($name = null)
     {
         $this->username = $name;
+        $this->layout = "1";
+        $this->coffeeOrTea ="0";
     }
 
 
@@ -55,7 +57,10 @@ class User implements JsonSerializable
 
     public function get_layout(): string
     {
-        return $this->layout;
+        if($this->layout != null){
+            return $this->layout;
+        }
+        return "1";
     }
 
 

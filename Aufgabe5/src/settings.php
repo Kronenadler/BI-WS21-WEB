@@ -14,12 +14,17 @@
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
     $user = $service->loadUser($username);
 
+    echo "nach Laden <br/>";
+
+    var_dump($user);
+
+    echo "<br/> nach Speichern <br/>";
+
     $firstname = $user->get_firstname();
     $lastname = $user->get_lastname();
     $coffeeOrTea = $user->get_coffeeOrTea();
     $comment = $user->get_comment();
-    //$layout = $user->get_layout();
-    var_dump($user);
+    $layout = $user->get_layout();
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user->set_firstname($_POST['firstname']);
@@ -28,6 +33,7 @@
         $user->set_comment($_POST['comment']);
         $user->set_layout($_POST['layout']);
 
+        var_dump($user);
         $service->saveUser($user);
     }
 ?>
@@ -46,11 +52,11 @@
             <div class="inline">
                 <p>
                     <label class="fixedlabel">First Name</label>
-                    <input class="fixed" name="firstname" style="margin: 0 5;" placeholder="Your Name" type="text" value=<?= $firstname?> />
+                    <input class="fixed" name="firstname" style="margin: 0 5;" type="text" value=<?=$firstname?> />
                 </p>
                 <p>
                     <label class="fixedlabel">Last Name</label>
-                    <input class="fixed" name="lastname" placeholder="Your Surname" type="text" value=<?= $lastname?>/> 
+                    <input class="fixed" name="lastname" type="text" value=<?=$lastname?>/> 
                 </p>
                 <p>Coffee or Tea
                     <select class="fixed" name="coffeeOrTea" id="beverage">
@@ -63,17 +69,21 @@
         </fieldset>
         <fieldset style="padding: 0.7em; box-sizing: border-box;">
             <legend>Tell me Something about you:</legend>
-            <textarea name="comment" class="big"  placeholder="Some Comment here"></textarea>
+            <textarea name="comment" class="big">
+                <?php
+                echo htmlspecialchars($comment);
+                ?>
+            </textarea>
         </fieldset>
         <fieldset>
             <legend>Präferenz</legend>
             <div class="beverageleft">
                 <div class="block">
-                    <input type="radio" id="oneline" name="layout">
+                    <input type="radio" name="layout" value="1" <?php echo ($layout=='1')?'checked':'' ?>>
                     <label for="oneline"> Username and Message in one Line</label>
                 </div>
                 <div class="block">
-                    <input type="radio" id="sepline" name="layout">
+                    <input type="radio" name="layout" value="2" <?php echo ($layout=='2')?'checked':'' ?>> 
                     <label for="sepline"> Username and Message in seperate Lines</label>
                 </div>               
             </div>

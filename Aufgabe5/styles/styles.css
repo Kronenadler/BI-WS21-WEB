@@ -166,8 +166,11 @@ padding: 10px 10px 5px 10px;
   background-color:blue;
   color:white;
   border-style:none;
-  width: 5%;
-  height: 2%;
+  height: 4%;
+  width: auto;
+  margin-left:0.5%;
+  padding-left:1em;
+  padding-right:1em;
 }
 .msgcount {
   float:right;
@@ -175,8 +178,10 @@ padding: 10px 10px 5px 10px;
   background-color:blue;
   color:white;
   border-style:none;
-  width: 2%;
-  height: 2%;
+  width: auto;
+  height: 4%;
+  padding-bottom: 7x;
+  font-size:20px;
   }
 .friendrequest {
 margin-bottom:1%;

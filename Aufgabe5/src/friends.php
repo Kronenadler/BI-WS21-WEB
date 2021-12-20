@@ -5,12 +5,6 @@ if(!isset($_SESSION["user"])) {
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 $friendlist = $service->loadFriends();
 
-// ----- Test: Remove when navigating to chat.php is possible
-if(isset($_POST["chatWith"])){
-    header("Location: chat.php?chatWith=".$_POST["chatWith"]);
-}
-// -----
-
 if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend")
 {  
         $service->friendRequest($_POST["reqFriend"]);   
@@ -31,7 +25,7 @@ if(isset($_POST["dismiss"])){
     $service->friendAccept($_POST["accept"]);
     header("Location: friends.php");}
  if(isset($_POST["chat"])){
-        header("Location: chat.html");}
+        header("Location: chat.php?chatWith=".$_POST["chat"]);}
  
 
 
@@ -79,7 +73,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                     <li id="friendslist"><?= $friend->username ?>    
                     <button class="buttonsphp" type="submit" name="remove"
                     value=<?= $friend->username ?>>Remove Friend</button>
-                    <button class="msgcount" type="submit" name="chat">3</button>
+                    <button class="msgcount" type="submit" name="chat" value="<?php echo $friend->username ?>">3</button>
             </form>
             <?php 
             $notempty = true;
@@ -123,11 +117,5 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
         </datalist>
         <!--id="link"-->
         <button class="sendFR" name="action" type="submit" value="add-friend">Add</button>
-    </form>
-
-    <!-- Test button: Remove when navigating to chat.php is possible -->
-    <form method="post">
-        <input name="chatWith" value="Leonie" hidden>
-        <button type="submit">chatWith=Leonie</button>
     </form>
 </body>

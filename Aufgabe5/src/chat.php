@@ -15,7 +15,7 @@ if(isset($_GET["removeFriend"])){
 }
 
 // Check if friend to chat with is set
-if(!isset($_GET["chatWith"])){
+if(!isset($_GET["chatWith"]) || strlen($_GET["chatWith"] <= 0)){
     header("Location: friends.php");
 } else {
     $friend = $_GET["chatWith"];

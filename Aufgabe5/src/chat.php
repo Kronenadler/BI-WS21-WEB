@@ -1,3 +1,21 @@
+<?php
+
+require("./start.php");
+$service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+
+// Check if user is logged in
+if(!isset($_SESSION["user"]) || !isset($_SESSION["chat_token"])){
+    header("Location: login.php");
+}
+
+// Check if friend to chat with is set
+if(!isset($_GET["chatWith"])){
+    header("Location: friends.php");
+} else {
+    $friend = $_GET["chatWith"];
+}
+
+?>
 <!DOCTYPE html>
 
 <!-- 
@@ -46,9 +64,10 @@
 
     <!-- Menu-->
     <p id="nav_header">
-        <a href="./friends.html">&lt; Back</a> |
-        <a href="./profile/profile.html">Profile</a> |
-        <a href="./friends.html">Remove Friend</a>
+        <a href="./friends.php">&lt; Back</a> |
+        <a href="./profile.php">Profile</a> |
+        <!-- ToDo: Remove Friend Functionality -->
+        <a href="./friends.php">Remove Friend</a>
     </p>
 
 

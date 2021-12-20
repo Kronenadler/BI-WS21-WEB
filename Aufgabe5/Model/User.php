@@ -6,12 +6,12 @@ use JsonSerializable;
 
 class User implements JsonSerializable
 {
-    private $username = '';
-    private $firstname= '';
-    private $lastname = '';
-    private $coffeeOrTea = '';
-    private $comment = '';
-    private $layout = '';
+    private $username;
+    private $firstname;
+    private $lastname;
+    private $coffeeOrTea;
+    private $comment;
+    private $layout;
 
     /**
      * Constructor creating the User Object

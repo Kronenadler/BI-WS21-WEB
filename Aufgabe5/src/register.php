@@ -100,7 +100,7 @@ if (isset($_POST["username"])) {
 
         </fieldset>
         <div id="bottom_btns">
-            <button class="btn" onclick="location.href='./login.html'" type="button">Cancel</button>
+            <button class="btn" onclick="location.href='./login.php'" type="button">Cancel</button>
             <button class="btn" type="submit" value="Submit">Create Account</button>
         </div>
     </form>

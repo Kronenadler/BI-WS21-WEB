@@ -66,22 +66,28 @@ class BackendService
         return false;
     }
 
-    public function loadUser($username)
-    {
+    public function loadUser($username) {
         try {
-            $data["username"] = $username;
-            
-            $response = HttpClient::get($this->base . '/' . $this->id . "/user", $data);
-            echo $response;
-            return User::fromJson($response);
-        } catch (\Exception $e) {
+            $ergebnis = HttpClient::get($this->base . '/' . $this->id . '/' . 'user' . '/' . $username, $_SESSION['chat_token']);
+            $user = User::fromJson($ergebnis);
+            return $user;
+        } catch(\Exception $e) {
             error_log($e);
         }
+        return false;
     }
 
-    public function saveUser($username)
-    {
+    public function saveUser($user) {
+        try {
+            $ergebnis = HttpClient::post($this->base . '/' . $this->id . '/' . 'user' . '/' , $user, $_SESSION['chat_token']);
+            return true;
+        } catch(\Exception $e) {
+            error_log($e);
+        }
+        return false;
     }
+
+
     public function loadFriends()
     {
         {   try {

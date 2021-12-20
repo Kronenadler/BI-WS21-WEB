@@ -1,18 +1,34 @@
 <?php 
     require("./start.php");
+
+
+    $firstname = '';
+    $lastname = '';
+    $coffeeOrTea = 0;
+    $comment = '';
+    $layout = '';
     if(!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
     $username = $_SESSION["user"];
-    echo $username;
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
-    $user = $service->loadUser("Test123");
-    echo $user;
-    if($username != null){
-        $service->loadUser($username);
-    }
-    else{
-        //header("Location: login.php");
+    $user = $service->loadUser($username);
+
+    $firstname = $user->get_firstname();
+    $lastname = $user->get_lastname();
+    $coffeeOrTea = $user->get_coffeeOrTea();
+    $comment = $user->get_comment();
+    //$layout = $user->get_layout();
+    var_dump($user);
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $user->set_firstname($_POST['firstname']);
+        $user->set_lastname($_POST['lastname']);
+        $user->set_coffeeOrTea($_POST['coffeeOrTea']);
+        $user->set_comment($_POST['comment']);
+        $user->set_layout($_POST['layout']);
+
+        $service->saveUser($user);
     }
 ?>
 <!DOCTYPE html>
@@ -23,21 +39,21 @@
 
 <body>
     <!--Eingabefunktion und submit mithilfe von Buttons-->
-    <form>
+    <form name="settingsform" id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <h2>Profile Settings</h2>
         <fieldset title="Base Data" class="align-center">
             <legend>Base Data:</legend>
             <div class="inline">
                 <p>
                     <label class="fixedlabel">First Name</label>
-                    <input class="fixed" style="margin: 0 5;" placeholder="Your Name" type="text" value=""/>
+                    <input class="fixed" name="firstname" style="margin: 0 5;" placeholder="Your Name" type="text" value=<?= $firstname?> />
                 </p>
                 <p>
                     <label class="fixedlabel">Last Name</label>
-                    <input class="fixed" placeholder="Your Surname" type="text" value=""/> 
+                    <input class="fixed" name="lastname" placeholder="Your Surname" type="text" value=<?= $lastname?>/> 
                 </p>
                 <p>Coffee or Tea
-                    <select class="fixed" name="hotbeverage" id="beverage">
+                    <select class="fixed" name="coffeeOrTea" id="beverage">
                         <option value="neither nor">Neither nor</option>
                         <option value="Coffee">Coffee</option>
                         <option value="tea">Tea</option>
@@ -47,17 +63,17 @@
         </fieldset>
         <fieldset style="padding: 0.7em; box-sizing: border-box;">
             <legend>Tell me Something about you:</legend>
-            <textarea class="big"  placeholder="Some Comment here"></textarea>
+            <textarea name="comment" class="big"  placeholder="Some Comment here"></textarea>
         </fieldset>
         <fieldset>
             <legend>Präferenz</legend>
             <div class="beverageleft">
                 <div class="block">
-                    <input type="radio" id="oneline" name="displaymethod">
+                    <input type="radio" id="oneline" name="layout">
                     <label for="oneline"> Username and Message in one Line</label>
                 </div>
                 <div class="block">
-                    <input type="radio" id="sepline" name="displaymethod">
+                    <input type="radio" id="sepline" name="layout">
                     <label for="sepline"> Username and Message in seperate Lines</label>
                 </div>               
             </div>
@@ -66,8 +82,7 @@
             <button>
                 Cancel
             </button>
-            <button class="blue">
-                Save
+            <input class="blue" type="submit" name="submit">
             </button>
         </div>
     </form>

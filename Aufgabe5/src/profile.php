@@ -1,5 +1,11 @@
 <?php 
     require("./start.php");
+    if(!isset($_SESSION["user"])) {
+        header("Location: login.php");
+    }
+    $username = $_SESSION["user"];
+    $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
+    $user = $service->loadUser($username);
 ?>
 <html>
     <head>
@@ -23,23 +29,23 @@
                 <img src="../images/profile.png" class="left"> 
                 <div class="right">
                         <p>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-                            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
-                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor 
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
-                            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, 
-                            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, 
-                            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
-                            magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                            <?php
+                            echo $user->get_username();
+                            ?>
                         </p>
             
                         <p>Coffee or Tea ?</p>
-                        <p>      Tea</p>
+                        <p>      
+                        <?php
+                            echo $user->get_coffeeOrTea();
+                        ?> 
+                        </p>
                         <p>Name</p>
-                        <p>      Thomas</p>
+                        <p>      
+                        <?php
+                            echo $user->get_firstname() + " " + $user->get_lastname();
+                        ?>
+                        </p>
                 </div>
             </div>
         </div>

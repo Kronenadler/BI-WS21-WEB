@@ -16,6 +16,7 @@ else { $errorAdd = "Fehler beim hinzufügen";}
 if(isset($_POST["remove"]) ){
     $service->friendRemove($_POST["remove"]);
     header("Location: friends.php");}
+
 if(isset($_POST["dismiss"])){
     $service->friendDismiss($_POST["dismiss"]);
     header("Location: friends.php");}
@@ -23,7 +24,8 @@ if(isset($_POST["dismiss"])){
  if(isset($_POST["accept"])){
     $service->friendAccept($_POST["accept"]);
     header("Location: friends.php");}
-
+ if(isset($_POST["chat"])){
+        header("Location: chat.html");}
  
 
 
@@ -39,7 +41,6 @@ ggf. zu den Nutzerprofil-Einstellungen.->
 
 <header>
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="../scripts/friends.js"></script>
     <title>
         Friendslist
     </title>
@@ -56,7 +57,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
 <body class="friends">
     <h1>Friends</h1>
     <div><?php $help1 =$_SESSION["user"];
-        echo $help1; ?>
+        echo "User logged in: ".$help1; ?>
     </div>
     <a href="./logout.php" id="link"> &lt; Log out</a>
     <span>|</span>
@@ -64,7 +65,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <hr class="friendslist">
     <ul class="friends">
         <?php 
-                                            //$friendlist = array aus objects
+        $notempty = false;                                   //$friendlist = array aus objects
         if(count($friendlist) != 0) {       //Hat der Array einen Inhalt?
         foreach ($friendlist as $friend) {  
             if($friend->status == "accepted"){
@@ -72,12 +73,13 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                     <li id="friendslist"><?= $friend->username ?>    
                     <button class="buttonsphp" type="submit" name="remove"
                     value=<?= $friend->username ?>>Remove Friend</button>
-                    <button class="msgcount">3</button>
+                    <button class="msgcount" type="submit" name="chat">3</button>
             </form>
             <?php 
+            $notempty = true;
             }}
         }
-           else {
+           else if(!$notempty) {
                ?>
          <li id="friendslist"><?= "You got no friends" ?>
          <?php }; ?>
@@ -94,9 +96,8 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                 if($friend->status == "requested")
                 {?>
                     <li id="friendslist"><?= $friend->username ?>
-                    <button class="buttonsphp" type="submit" name="accept" value=<?= $friend->username ?>>Accept Friend</button>
-   
-                    <button class="buttonsphp" type="submit" name="dismiss" value=<?= $friend->username ?>>Dismiss Friend</button>
+                    <button class="buttonsphp" type="submit" name="accept" value=<?= $friend->username ?>>Accept</button>
+                    <button class="buttonsphp" type="submit" name="dismiss" value=<?= $friend->username ?>>Dismiss</button>
                    
                 <?php }
             }

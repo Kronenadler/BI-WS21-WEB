@@ -93,7 +93,7 @@ class BackendService
         {   try {
             $data = $_SESSION["chat_token"];
             $result = HttpClient::get($this->base . '/' . $this->id . "/friend", $data);
-          //  var_dump($result);
+            var_dump($result);
             return $result;
         } catch(\Exception $e) {
             echo "Error...";
@@ -102,6 +102,8 @@ class BackendService
     public function friendRequest($friend)
     {
         try {
+            
+
            return HttpClient::post($this->base . '/' . $this->id . "/friend",  array("username" => $friend), $_SESSION["chat_token"]);
         } catch(\Exception $e) {
             echo "Error...";

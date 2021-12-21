@@ -173,6 +173,11 @@ padding: 10px 10px 5px 10px;
   padding-right:0.5em;
   font-size:20px;
 }
+.refresh {
+  float:right;
+  background-color: purple;
+  text-decoration: none;
+}
 .loginlogin {
   background-color: blue;
   float:none;

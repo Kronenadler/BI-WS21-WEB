@@ -2,11 +2,13 @@
 if(!isset($_SESSION["user"])) {
     header("Location: login.php");
 }
+//header("Refresh:10");
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 $friendlist = $service->loadFriends();
 
 if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend" && $_POST["reqFriend"] != $_SESSION["user"])
 {  
+
         $service->friendRequest($_POST["reqFriend"]);   
         header("Location: friends.php");
 
@@ -41,6 +43,7 @@ ggf. zu den Nutzerprofil-Einstellungen.->
 
 <header>
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="../scripts/friends.js"></script>
     <title>
         Friendslist
     </title>
@@ -54,8 +57,10 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="friends">
-    <h1>Friends</h1>
+<body class="friends" >
+    <div><h1>Friends
+    <button class="refresh" onclick="location.reload();">Refresh Page</button></h1>
+    </div>
     <div><?php $help1 =$_SESSION["user"];
         echo "User logged in: ".$help1; ?>
     </div>
@@ -63,11 +68,15 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <span>|</span>
     <a href="./settings.php" id="link">Settings</a>
     <hr class="friendslist">
+    <div id="2222">
     <ul class="friends">
         <?php 
-        $notempty = false;                                   //$friendlist = array aus objects
-        if(count($friendlist) != 0) {       //Hat der Array einen Inhalt?
-        foreach ($friendlist as $friend) {  
+        $notempty = false;   
+        $acceptedCount = 0;                              //$friendlist = array aus objects
+        if(count($friendlist) > 0) {       //Hat der Array einen Inhalt?
+        foreach ($friendlist as $friend) { 
+            $notempty=false; 
+           
             if($friend->status == "accepted"){
           ?>    <form method="post">
                     <li id="friendslist"><?= $friend->username ?>    
@@ -76,15 +85,17 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                     <button class="msgcount" type="submit" name="chat" value="<?php echo $friend->username ?>">Chat</button>
             </form>
             <?php 
-            $notempty = true;
-            }}
+             $acceptedCount = $acceptedCount + 1;
+            } else { ?><li id="friendslist"><?= "You got no friends" ?><?php }
         }
-           else if(!$notempty) {
+        }
+           else if( $acceptedCount == 0) {
                ?>
          <li id="friendslist"><?= "You got no friends" ?>
-         <?php }; ?>
+         <?php };
+        ?>
     </ul>
-
+           </div>   
 
     <hr class="friendslist">
     <h2>New Requests:</h2>
@@ -107,6 +118,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
             <?php //}; ?>
         </ol>
         
+    
     </form>
     <form method="post">
         <hr class="friendslist">

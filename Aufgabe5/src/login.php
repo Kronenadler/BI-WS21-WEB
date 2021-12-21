@@ -76,16 +76,16 @@ else {
         <div class="row">
             <div class="col-12">
                 
+            <a href="./register.php">
+                    <button id="button" type="none" class="loginregister">Register</button>
+                </a>
 
-
-                <button id="button" class="blue" type="submit" value="save">Login</button>
+                <button id="button" class="loginlogin" type="submit" value="save">Login</button>
 
             </div>
         </div>
     </form>
-    <a href="./register.php">
-                    <button id="button" type="none" class="grey">Register</button>
-                </a>
+    
 
 
 

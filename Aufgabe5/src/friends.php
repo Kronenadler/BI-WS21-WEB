@@ -5,7 +5,7 @@ if(!isset($_SESSION["user"])) {
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 $friendlist = $service->loadFriends();
 
-if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend")
+if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend" && $_POST["reqFriend"] != $_SESSION["user"])
 {  
         $service->friendRequest($_POST["reqFriend"]);   
         header("Location: friends.php");
@@ -73,7 +73,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                     <li id="friendslist"><?= $friend->username ?>    
                     <button class="buttonsphp" type="submit" name="remove"
                     value=<?= $friend->username ?>>Remove Friend</button>
-                    <button class="msgcount" type="submit" name="chat" value="<?php echo $friend->username ?>">3</button>
+                    <button class="msgcount" type="submit" name="chat" value="<?php echo $friend->username ?>">Chat</button>
             </form>
             <?php 
             $notempty = true;

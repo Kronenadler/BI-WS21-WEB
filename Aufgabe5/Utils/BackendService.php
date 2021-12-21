@@ -93,7 +93,7 @@ class BackendService
         {   try {
             $data = $_SESSION["chat_token"];
             $result = HttpClient::get($this->base . '/' . $this->id . "/friend", $data);
-            var_dump($result);
+          //  var_dump($result);
             return $result;
         } catch(\Exception $e) {
             echo "Error...";

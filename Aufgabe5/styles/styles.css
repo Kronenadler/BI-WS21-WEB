@@ -166,11 +166,20 @@ padding: 10px 10px 5px 10px;
   background-color:blue;
   color:white;
   border-style:none;
-  height: 4%;
+  height: 5%;
   width: auto;
   margin-left:0.5%;
-  padding-left:1em;
-  padding-right:1em;
+  padding-left:0.5em;
+  padding-right:0.5em;
+  font-size:20px;
+}
+.loginlogin {
+  background-color: blue;
+  float:none;
+  padding-right:10%;
+}
+.loginregister {
+  background-color: grey;
 }
 .msgcount {
   float:right;
@@ -179,9 +188,9 @@ padding: 10px 10px 5px 10px;
   color:white;
   border-style:none;
   width: auto;
-  height: 4%;
-  padding-bottom: 7x;
+  height: 5%;
   font-size:20px;
+  margin-bottom:0.1em;
   }
 .friendrequest {
 margin-bottom:1%;

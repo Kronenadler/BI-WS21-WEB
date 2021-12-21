@@ -2,11 +2,11 @@
     require("./start.php");
 
 
-    $firstname = '';
-    $lastname = '';
-    $coffeeOrTea = 0;
-    $comment = '';
-    $layout = '';
+    $firstname;
+    $lastname;
+    $coffeeOrTea;
+    $comment;
+    $layout;
     if(!isset($_SESSION["user"])) {
         header("Location: login.php");
     }
@@ -30,12 +30,20 @@
         $user->set_firstname($_POST['firstname']);
         $user->set_lastname($_POST['lastname']);
         $user->set_coffeeOrTea($_POST['coffeeOrTea']);
-        $user->set_comment($_POST['comment']);
+        $user->set_comment(test_input($_POST["comment"]));
         $user->set_layout($_POST['layout']);
 
         var_dump($user);
         $service->saveUser($user);
     }
+
+
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
 ?>
 <!DOCTYPE html>
 <head>
@@ -52,38 +60,34 @@
             <div class="inline">
                 <p>
                     <label class="fixedlabel">First Name</label>
-                    <input class="fixed" name="firstname" style="margin: 0 5;" type="text" value=<?=$firstname?> />
+                    <input class="fixed" placeholder="Your Name" name="firstname" style="margin: 0 5;" type="text" value=<?php echo $firstname?> ></input>
                 </p>
                 <p>
                     <label class="fixedlabel">Last Name</label>
-                    <input class="fixed" name="lastname" type="text" value=<?=$lastname?>/> 
+                    <input class="fixed" placeholder="Your Surname" name="lastname" type="text" value=<?php echo $user->get_lastname()?> ></input>
                 </p>
                 <p>Coffee or Tea
                     <select class="fixed" name="coffeeOrTea" id="beverage">
-                        <option value="neither nor">Neither nor</option>
-                        <option value="Coffee">Coffee</option>
-                        <option value="tea">Tea</option>
+                        <option value="neither nor" <?php echo ($user->get_coffeeOrTea()=='neither nor')?'selected':'' ?>>Neither nor</option>
+                        <option value="coffee" <?php echo ($user->get_coffeeOrTea()=='coffee')?'selected':'' ?>>Coffee</option>
+                        <option value="tea" <?php echo ($user->get_coffeeOrTea()=='tea')?'selected':'' ?>>Tea</option>
                     </select>
                 </p> 
             </div> 
         </fieldset>
         <fieldset style="padding: 0.7em; box-sizing: border-box;">
             <legend>Tell me Something about you:</legend>
-            <textarea name="comment" class="big">
-                <?php
-                echo htmlspecialchars($comment);
-                ?>
-            </textarea>
+            <textarea name="comment" class="big" rows="5" cols="40" placeholder="Some Comment here"><?php echo test_input($user->get_comment()); ?></textarea>
         </fieldset>
         <fieldset>
             <legend>Präferenz</legend>
             <div class="beverageleft">
                 <div class="block">
-                    <input type="radio" name="layout" value="1" <?php echo ($layout=='1')?'checked':'' ?>>
+                    <input type="radio" name="layout" value="1" <?php echo ($user->get_layout()=='1')?'checked':'' ?>>
                     <label for="oneline"> Username and Message in one Line</label>
                 </div>
                 <div class="block">
-                    <input type="radio" name="layout" value="2" <?php echo ($layout=='2')?'checked':'' ?>> 
+                    <input type="radio" name="layout" value="2" <?php echo ($user->get_layout()=='2')?'checked':'' ?>> 
                     <label for="sepline"> Username and Message in seperate Lines</label>
                 </div>               
             </div>
@@ -92,7 +96,8 @@
             <button>
                 Cancel
             </button>
-            <input class="blue" type="submit" name="submit">
+            <button class="blue" type="submit" name="submit">
+            Save
             </button>
         </div>
     </form>

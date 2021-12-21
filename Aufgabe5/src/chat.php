@@ -60,7 +60,7 @@ if(!isset($_GET["chatWith"]) || strlen($_GET["chatWith"] <= 0)){
     <!-- Menu-->
     <p id="nav_header">
         <a href="./friends.php">&lt; Back</a> |
-        <a href="./profile.php">Profile</a> |
+        <a href="./profile.php?profileOf=<?php echo $friend?>">Profile</a> |
         <!-- ToDo: Remove Friend Functionality -->
         <a href="./chat.php?removeFriend=<?php echo $friend ?>">Remove Friend</a>
         

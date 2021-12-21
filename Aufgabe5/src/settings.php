@@ -33,8 +33,17 @@
         $user->set_comment(test_input($_POST["comment"]));
         $user->set_layout($_POST['layout']);
 
-        var_dump($user);
-        $service->saveUser($user);
+        $response = $service->saveUser($user);
+
+        if ($response == true) {
+            header("Location: friends.php");
+        }
+    }
+
+    // Check if friend should be removed
+    if(isset($_GET["removeFriend"])){
+        $service->friendRemove($_GET["removeFriend"]);
+        header("Location: friends.php");
     }
 
 
@@ -68,9 +77,9 @@
                 </p>
                 <p>Coffee or Tea
                     <select class="fixed" name="coffeeOrTea" id="beverage">
-                        <option value="neither nor" <?php echo ($user->get_coffeeOrTea()=='neither nor')?'selected':'' ?>>Neither nor</option>
-                        <option value="coffee" <?php echo ($user->get_coffeeOrTea()=='coffee')?'selected':'' ?>>Coffee</option>
-                        <option value="tea" <?php echo ($user->get_coffeeOrTea()=='tea')?'selected':'' ?>>Tea</option>
+                        <option value="Neither nor" <?php echo ($user->get_coffeeOrTea()=='Neither nor')?'selected':'' ?>>Neither nor</option>
+                        <option value="Coffee" <?php echo ($user->get_coffeeOrTea()=='Coffee')?'selected':'' ?>>Coffee</option>
+                        <option value="Tea" <?php echo ($user->get_coffeeOrTea()=='Tea')?'selected':'' ?>>Tea</option>
                     </select>
                 </p> 
             </div> 
@@ -93,9 +102,7 @@
             </div>
         </fieldset>
         <div class="align-center">
-            <button>
-                Cancel
-            </button>
+            <button onclick="location.href='./friends.php'"> Cancel </button>
             <button class="blue" type="submit" name="submit">
             Save
             </button>

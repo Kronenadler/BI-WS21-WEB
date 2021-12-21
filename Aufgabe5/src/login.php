@@ -77,7 +77,9 @@ else {
             <div class="col-12">
                 
             <a href="./register.php">
-                    <button id="button" type="none" class="loginregister">Register</button>
+                  
+                    <button id="button" class="loginregister" onclick="location.href='./login.php'" type="button">Register</button>
+
                 </a>
 
                 <button id="button" class="loginlogin" type="submit" value="save">Login</button>

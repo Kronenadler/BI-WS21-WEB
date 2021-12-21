@@ -14,7 +14,11 @@
         $friend = $_GET["profileOf"];
     }
 
-    echo $friend;
+    // Check if friend should be removed
+    if(isset($_GET["removeFriend"])){
+        $service->friendRemove($_GET["removeFriend"]);
+        header("Location: friends.php");
+    }
 ?>
 <html>
     <head>

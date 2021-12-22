@@ -41,6 +41,7 @@ if(isset($_POST["dismiss"])){
  if(isset($_POST["chat"])){
         header("Location: chat.php?chatWith=".$_POST["chat"]);}
  
+   
 
 
 ?>
@@ -56,6 +57,7 @@ ggf. zu den Nutzerprofil-Einstellungen.->
 <header>
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="../scripts/friends.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <title>
         Friendslist
     </title>
@@ -65,11 +67,22 @@ window.chatToken = "<?= $_SESSION['chat_token'] ?>";
 window.chatCollectionId = "<?= $CHAT_SERVER_ID ?>";
 window.chatServer = "<?= $CHAT_SERVER_URL ?>";
 </script>
+<script>
+    $(document).ready(function(){
+        setInterval(function() {
+            $("#latestData").load("friends.php #latestData");
+        }, 1000);
+    });
+
+</script>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body class="friends" >
+<div id = "latestData">
+
+
     <div><h1>Friends
     <button class="refresh" onclick="location.reload();">Refresh Page</button></h1>
     </div>
@@ -148,4 +161,5 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
         <!--id="link"-->
         <button class="sendFR" name="action" type="submit" value="add-friend">Add</button>
     </form>
+    </div>
 </body>

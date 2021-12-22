@@ -21,6 +21,13 @@ if(!isset($_GET["chatWith"]) || strlen($_GET["chatWith"] <= 0)){
     $friend = $_GET["chatWith"];
 }
 
+// Load current User data
+$user = $service->loadUser($_SESSION["user"]);
+if($user == false){
+    header("Location: login.php");
+}
+$layout = $user->get_layout();
+
 ?>
 <!DOCTYPE html>
 
@@ -40,7 +47,8 @@ if(!isset($_GET["chatWith"]) || strlen($_GET["chatWith"] <= 0)){
             "collection_id": "<?php echo CHAT_SERVER_ID ?>",
             "currentUser": "<?php echo $_SESSION["user"] ?>",
             "token": "<?php echo $_SESSION["chat_token"] ?>",
-            "messagedUser": "<?php echo $friend ?>"
+            "messagedUser": "<?php echo $friend ?>",
+            "layout": "<?php echo $layout ?>"
         };
     </script>
 
@@ -60,8 +68,7 @@ if(!isset($_GET["chatWith"]) || strlen($_GET["chatWith"] <= 0)){
     <!-- Menu-->
     <p id="nav_header">
         <a href="./friends.php">&lt; Back</a> |
-        <a href="./profile.php?profileOf=<?php echo $friend?>">Profile</a> |
-        <!-- ToDo: Remove Friend Functionality -->
+        <a href="./profile.php?profileOf=<?php echo $friend ?>">Profile</a> |
         <a href="./chat.php?removeFriend=<?php echo $friend ?>">Remove Friend</a>
         
     </p>

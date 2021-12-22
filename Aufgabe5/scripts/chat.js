@@ -58,11 +58,22 @@ function displayMessages(data) {
     for (let msg of data) {
         // Create new div per message
         let timestamp = new Date(msg.time).toLocaleString();
-        messages_html +=
-            `<div>
+        if (chat.layout == '2') {
+            messages_html +=
+                `<div>
+                <label><b>${msg.from}</b>:<br>
+                ${msg.msg}</label>
+                <label class="timestamp">${timestamp}</label>
+            </div>`;
+
+        } else // == 1
+        {
+            messages_html +=
+                `<div>
                 <label><b>${msg.from}</b>: ${msg.msg}</label>
                 <label class="timestamp">${timestamp}</label>
             </div>`;
+        }
     }
 
     // Set message area to new content

@@ -22,8 +22,10 @@ class User implements JsonSerializable
     {
         $this->username = $name;
         $this->layout = "1";
-        $this->coffeeOrTea ="0";
+        $this->coffeeOrTea ="Neiter nor";
         $this->comment = "";
+        $this->firstname = "";
+        $this->lastname = "";
     }
 
 

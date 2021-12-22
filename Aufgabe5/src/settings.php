@@ -14,12 +14,6 @@
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
     $user = $service->loadUser($username);
 
-    echo "nach Laden <br/>";
-
-    var_dump($user);
-
-    echo "<br/> nach Speichern <br/>";
-
     $firstname = $user->get_firstname();
     $lastname = $user->get_lastname();
     $coffeeOrTea = $user->get_coffeeOrTea();

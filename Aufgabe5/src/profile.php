@@ -5,13 +5,13 @@
     }
     $username = $_SESSION["user"];
     $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
-    $user = $service->loadUser($username);
 
     // Check if friend to chat with is set
     if(!isset($_GET["profileOf"]) || strlen($_GET["profileOf"] <= 0)){
         header("Location: friends.php");
     } else {
         $friend = $_GET["profileOf"];
+        $user = $service->loadUser($friend);
     }
 
     // Check if friend should be removed
@@ -41,7 +41,7 @@
                 <div class="right">
                         <p>
                             <?php
-                            echo $user->get_username();
+                            echo $user->get_comment();
                             ?>
                         </p>
             

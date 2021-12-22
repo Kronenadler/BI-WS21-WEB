@@ -5,16 +5,28 @@ if(!isset($_SESSION["user"])) {
 //header("Refresh:10");
 $service = new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 $friendlist = $service->loadFriends();
+$prestine = true;
 
-if(isset($_POST["reqFriend"]) && $_POST["action"] == "add-friend" && $_POST["reqFriend"] != $_SESSION["user"])
-{  
-
+if(isset($_POST["reqFriend"])){
+    if( $_POST["action"] == "add-friend" && $service->userExists($_POST["reqFriend"]))
+{  if( $_POST["reqFriend"] != $_SESSION["user"] ) {
         $service->friendRequest($_POST["reqFriend"]);   
         header("Location: friends.php");
+        $_SESSION["errorFriends"] = "";
+}
+else {
+    $_SESSION["errorFriends"] = "Can't send yourself a friendrequest.";
+}
+}
+
+else {
+    $_SESSION["errorFriends"] = "Friend does not exist.";
+}
+}
+else {
+    $_SESSION["errorFriends"] = "";
 
 }
-else { $errorAdd = "Fehler beim hinzufügen";}
-
 if(isset($_POST["remove"]) ){
     $service->friendRemove($_POST["remove"]);
     header("Location: friends.php");}
@@ -68,7 +80,6 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     <span>|</span>
     <a href="./settings.php" id="link">Settings</a>
     <hr class="friendslist">
-    <div id="2222">
     <ul class="friends">
         <?php 
         $notempty = false;   
@@ -95,7 +106,6 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
          <?php };
         ?>
     </ul>
-           </div>   
 
     <hr class="friendslist">
     <h2>New Requests:</h2>
@@ -122,6 +132,14 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     </form>
     <form method="post">
         <hr class="friendslist">
+        <div>
+        <?php
+                    if($_SESSION["errorFriends"]){
+                        $error = $_SESSION["errorFriends"];
+                        echo "<span style='color:red'>$error</span>";  
+                    }
+                ?>
+                </div> 
         <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="reqFriend" value="" size="20"
             maxlength="50;" list="names" onkeyup="keyup(this)" />
         <datalist id="names">

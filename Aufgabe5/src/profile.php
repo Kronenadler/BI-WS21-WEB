@@ -54,7 +54,7 @@
                         <p>Name</p>
                         <p>      
                         <?php
-                            echo $user->get_firstname();
+                            echo "{$user->get_firstname()}   {$user->get_lastname()}";
                         ?>
                         </p>
                 </div>

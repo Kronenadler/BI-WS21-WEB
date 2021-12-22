@@ -71,7 +71,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
     $(document).ready(function(){
         setInterval(function() {
             $("#latestData").load("friends.php #latestData");
-        }, 1000);
+        }, 5000);
     });
 
 </script>
@@ -153,6 +153,7 @@ window.chatServer = "<?= $CHAT_SERVER_URL ?>";
                     }
                 ?>
                 </div> 
+               
         <input class="frInsertUsername" placeholder="Add Friend to List" type="text" name="reqFriend" value="" size="20"
             maxlength="50;" list="names" onkeyup="keyup(this)" />
         <datalist id="names">
